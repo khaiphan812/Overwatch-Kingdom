@@ -92,7 +92,7 @@ def get_user_direction():
     print("Below are the possible directions:")
     print("1. North\n2. South\n3. East\n4. West")
     while True:
-        user_choice = input("Which direction do you want to go? Input number: ")
+        user_choice = input("Which direction do you want to go? Input a number: ")
         if user_choice in directions:
             return directions[user_choice]
         print("Invalid input. Please enter a valid direction.")
@@ -197,7 +197,7 @@ def check_for_challenge():
     :return: True if the player encounters a foe, else False
 
     """
-    return random.randint(1, 4) == 1 or 2 or 3
+    return random.randint(1, 2) == 1
 
 
 def challenge_picker(character):
@@ -206,13 +206,13 @@ def challenge_picker(character):
     :return:
     """
 
-    challenge = random.randint(1, 3)
+    challenge = random.randint(1, 4)
     if challenge == 1:
-        word_puzzle(character)
+        rock_paper_scissors(character)
     elif challenge == 2:
         roll_dice(character)
     else:
-        rock_paper_scissors(character)
+        word_puzzle(character)
 
 
 def word_puzzle(character):
@@ -220,6 +220,8 @@ def word_puzzle(character):
 
     :return:
     """
+    print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
+          "Hint: the word is python-related!")
     words_list = ["pythonic", "function", "aliases", "immutable", "iteration", "dictionary", "tuple"]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
@@ -227,8 +229,8 @@ def word_puzzle(character):
     print("Unscramble the word:", scrambled_word)
     guess = input("Your guess: ")
     if guess == chosen_word:
-        character["EXP"] += 100
-        print("Correct! You gained 100 EXP.")
+        character['XP'] += 100
+        print(f"Correct! You gained 100 XP. Your current is {character['XP']}.")
     else:
         character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
@@ -241,7 +243,8 @@ def roll_dice(character):
     :param character:
     :return:
     """
-    user_guess = int(input('Guess the dice roll (enter number between 1 and 6: '))
+    print("You're facing Roll the Dice challenge. Guess the correct dice roll to gain XP, otherwise you'll lose 1 HP.")
+    user_guess = int(input('Guess the dice roll (enter a number between 1 and 6): '))
     dice_roll = random.randint(1, 6)
     if user_guess == dice_roll:
         character['XP'] += 100
@@ -257,6 +260,7 @@ def rock_paper_scissors(character):
     :param character:
     :return:
     """
+    print("Welcome to Rock, Paper, Scissors fight. You must win or tie to not lose your HP. Good luck!")
     options = ['rock', 'paper', 'scissors']
     user_input = input('Pick between "rock", "paper", or "scissors": ')
     user_choice = user_input.lower().strip()
@@ -268,11 +272,50 @@ def rock_paper_scissors(character):
     elif (user_choice == "rock" and enemy_choice == "scissors") or \
          (user_choice == "paper" and enemy_choice == "rock") or \
          (user_choice == "scissors" and enemy_choice == "paper"):
-        character['XP'] += 1
+        character['XP'] += 100
         print(f'You won the fight. You gained 100 XP! Your current is {character['XP']}.')
     else:
-        character['XP'] -= 1
+        character['HP'] -= 1
         print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
+
+
+def level_up(character):
+    """
+
+    :param character:
+    :return:
+    """
+    if character['XP'] == 300:
+        character['HP'] += 5
+        character['Weapon'] = 'Rocket Hammer'
+        print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.\n"
+              f"Your weapon has been upgraded to a {character['Weapon']}.")
+
+    if character['XP'] == 600:
+        character['HP'] += 5
+        character['Weapon'] = 'Biotic Rifle'
+        print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.\n"
+              f"Your weapon has been upgraded to a {character['Weapon']}.")
+
+
+def check_if_final_boss(character):
+    """
+
+    :param character:
+    :return:
+    """
+    return character['XP'] == 600
+
+
+def final_boss(character):
+    """
+
+    :param character:
+    :return:
+    """
+    print("You are now ready to face the Final Boss - Doomfist! You must defeat him to finish the game. Good luck!")
+    print("game rule")
+    pass
 
 
 def is_alive(character):
@@ -311,7 +354,7 @@ def game():
             describe_current_location(board, character)
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
-                guessing_game(character)
+                challenge_picker(character)
             achieved_goal = check_if_goal_attained(board, character)
         else:
             print("Sorry you can't go in that direction.")
