@@ -307,7 +307,7 @@ def check_if_final_boss(character):
     return character['XP'] == 600
 
 
-def final_boss(character):
+def final_boss_battle(character):
     """
 
     :param character:
@@ -355,6 +355,9 @@ def game():
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
                 challenge_picker(character)
+            final_boss = check_if_final_boss(character)
+            if final_boss:
+                final_boss_battle(character)
             achieved_goal = check_if_goal_attained(board, character)
         else:
             print("Sorry you can't go in that direction.")
