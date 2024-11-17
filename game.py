@@ -170,23 +170,8 @@ def check_if_goal_attained(board, character):
     :postcondition: check if the character has reached the destination
     :return: True if the character has reached the destination, else False
 
-    >>> gameboard = {
-    ...      (0 ,0): 'Scary Cave',
-    ...      (0 ,1): 'Dark Tunnel',
-    ...      (4 ,4): 'Safe Haven',
-    ... }
-    >>> char = {'X-coordinate': 0, 'Y-coordinate': 1}
-    >>> check_if_goal_attained(gameboard, char)
-    False
-    >>> char = {"X-coordinate": 4, "Y-coordinate": 4}
-    >>> check_if_goal_attained(gameboard, char)
-    True
     """
-    max_row = max(key[0] for key in board.keys())
-    max_col = max(key[1] for key in board.keys())
-    if character["X-coordinate"] == max_row and character["Y-coordinate"] == max_col:
-        return True
-    return False
+
 
 
 def check_for_challenge():
@@ -318,6 +303,15 @@ def final_boss_battle(character):
     pass
 
 
+def check_if_defeat_boss(character):
+    """
+
+    :param character:
+    :return:
+    """
+    return
+
+
 def is_alive(character):
     """
     Check if the character is still alive.
@@ -344,8 +338,8 @@ def game():
     board = make_board(rows, columns)
     character = make_character()
     print("Objective: Move to the bottom right corner of the board without dying.")
-    achieved_goal = False
-    while is_alive(character) and not achieved_goal:
+    mission_complete = False
+    while is_alive(character) and not mission_complete:
         describe_current_location(board, character)
         direction = get_user_direction()
         valid_move = validate_move(board, character, direction)
@@ -355,16 +349,26 @@ def game():
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
                 challenge_picker(character)
+            level_up(character)
             final_boss = check_if_final_boss(character)
             if final_boss:
                 final_boss_battle(character)
-            achieved_goal = check_if_goal_attained(board, character)
+            mission_complete = check_if_defeat_boss(character)
         else:
             print("Sorry you can't go in that direction.")
     if not is_alive(character):
-        print("Sorry, no HP left, you just died. Very sad :(")
+        print("Sorry, you got 0 HP left and died. Mission Failed.")
     else:
-        print("Congratulations! You have finally reached the Promise Land!")
+        print("Congratulations! Mission accomplished!")
+    print("""
+                  ::::::::::: :::    ::: ::::::::::         :::::::::: ::::    ::: :::::::::
+                     :+:     :+:    :+: :+:                :+:        :+:+:   :+: :+:    :+:
+                    +:+     +:+    +:+ +:+                +:+        :+:+:+  +:+ +:+    +:+ 
+                   +#+     +#++:++#++ +#++:++#           +#++:++#   +#+ +:+ +#+ +#+    +:+  
+                  +#+     +#+    +#+ +#+                +#+        +#+  +#+#+# +#+    +#+   
+                 #+#     #+#    #+# #+#                #+#        #+#   #+#+# #+#    #+#    
+                ###     ###    ### ##########         ########## ###    #### #########                                                                                                                                                   
+                """)
 
 
 def main():
