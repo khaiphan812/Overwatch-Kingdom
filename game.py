@@ -214,6 +214,30 @@ def challenge_picker():
         rock_paper_scissors()
 
 
+def rock_paper_scissors(character):
+    """
+
+    :param character:
+    :return:
+    """
+    options = ['rock', 'paper', 'scissors']
+    user_input = input('Pick between "rock", "paper", or "scissors": ')
+    user_choice = user_input.lower().strip()
+    enemy_choice = random.choice(options)
+    print(f'Your enemy chose {enemy_choice}.')
+
+    if user_choice == enemy_choice:
+        print(f"It's a tie. You survive another day. You can move on.")
+    elif (user_choice == "rock" and enemy_choice == "scissors") or \
+         (user_choice == "paper" and enemy_choice == "rock") or \
+         (user_choice == "scissors" and enemy_choice == "paper"):
+        character['XP'] += 1
+        print(f'You won the fight. You gained 100 XP! Your current is {character['XP']}.')
+    else:
+        character['XP'] -= 1
+        print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
+
+
 def guessing_game(character):
     """
     Make the player play a guessing game.
