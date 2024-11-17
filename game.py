@@ -200,18 +200,55 @@ def check_for_challenge():
     return random.randint(1, 4) == 1 or 2 or 3
 
 
-def challenge_picker():
+def challenge_picker(character):
     """
 
     :return:
     """
+
     challenge = random.randint(1, 3)
     if challenge == 1:
-        word_scramble()
+        word_puzzle(character)
     elif challenge == 2:
-        roll_dice()
+        roll_dice(character)
     else:
-        rock_paper_scissors()
+        rock_paper_scissors(character)
+
+
+def word_puzzle(character):
+    """
+
+    :return:
+    """
+    words_list = ["pythonic", "function", "aliases", "immutable", "iteration", "dictionary", "tuple"]
+    chosen_word = random.choice(words_list)
+    scrambled_list = random.sample(chosen_word, len(chosen_word))
+    scrambled_word = "".join(scrambled_list)
+    print("Unscramble the word:", scrambled_word)
+    guess = input("Your guess: ")
+    if guess == chosen_word:
+        character["EXP"] += 100
+        print("Correct! You gained 100 EXP.")
+    else:
+        character["HP"] -= 1
+        print(f"Wrong! The correct word was: {chosen_word}\n"
+              f"You just lost 1 HP. Your current HP is {character['HP']}.")
+
+
+def roll_dice(character):
+    """
+
+    :param character:
+    :return:
+    """
+    user_guess = int(input('Guess the dice roll (enter number between 1 and 6: '))
+    dice_roll = random.randint(1, 6)
+    if user_guess == dice_roll:
+        character['XP'] += 100
+        print(f'You are correct! You have gained 100 XP! Your current is {character['XP']}.')
+    else:
+        character['HP'] -= 1
+        print(f'Wrong! The result is {dice_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
 
 
 def rock_paper_scissors(character):
@@ -236,25 +273,6 @@ def rock_paper_scissors(character):
     else:
         character['XP'] -= 1
         print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
-
-
-def guessing_game(character):
-    """
-    Make the player play a guessing game.
-
-    :param character: a dictionary containing the player's current location and HP
-    :precondition: character is a dictionary containing the player's current location and HP
-    :postcondition: reduce the character's HP by 1 if guessing incorrectly
-
-    """
-    secret_number = (random.randint(1, 5))
-    guess = int(input("Enemy alert! Guess an integer between 1 and 5 (inclusive): "))
-    if guess == secret_number:
-        print("You are correct! You may continue your journey.")
-    else:
-        character["Current HP"] -= 1
-        print(f"Wrong! The correct number was {secret_number}. "
-              f"You just lost 1 HP. You now have {character["HP"]} HP left.")
 
 
 def is_alive(character):
