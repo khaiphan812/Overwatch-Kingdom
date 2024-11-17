@@ -200,6 +200,20 @@ def check_for_challenge():
     return random.randint(1, 4) == 1 or 2 or 3
 
 
+def challenge_picker():
+    """
+
+    :return:
+    """
+    challenge = random.randint(1, 3)
+    if challenge == 1:
+        word_scramble()
+    elif challenge == 2:
+        roll_dice()
+    else:
+        rock_paper_scissors()
+
+
 def guessing_game(character):
     """
     Make the player play a guessing game.
