@@ -44,7 +44,7 @@ def make_character():
     >>> player
     {'X-coordinate': 0, 'Y-coordinate': 0, 'HP': 5, 'XP': 0, 'Weapon': 'Magic Sword'}
     """
-    return {'X-coordinate': 0, 'Y-coordinate': 0, 'HP': 5, 'XP': 0, 'Weapon': 'Magic Sword'}
+    return {'X-coordinate': 0, 'Y-coordinate': 0, 'HP': 5, 'XP': 0, 'Level': 1, 'Weapon': 'Dragon Blade'}
 
 
 def describe_current_location(board, character):
@@ -253,7 +253,7 @@ def check_if_level_up(character):
     :param character:
     :return:
     """
-    if character['XP'] == 300:
+    if character['XP'] >= 300:
         character['HP'] += 5
         character['Weapon'] = 'Rocket Hammer'
         print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.\n"
@@ -286,23 +286,26 @@ def final_boss_battle(character):
     riddle_list = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5'}
     while character['HP'] > 0:
         riddle, answer = random.choice(list(riddle_list.items()))
+        print(riddle)
         user_answer = input('Give your answer: ').lower().strip()
-        if user_answer == answer:
-            print('You have defeated Doomfist!')
+        if user_answer != answer:
+            character['HP'] = max(0, character['HP'] - 2)
+            print(f'You got it wrong. You lost 2 HP. Your have {character['HP']} left.')
         else:
-            character['HP'] -= 2
-            print(f'You got it wrong. You lost 2 HP. Your current HP is {character['HP']}. Try again.')
+            print('You have defeated Doomfist!')
+            return
     print('Doomfist has defeated you!')
 
 
-def check_if_defeat_boss(user_answer, answer):
+def check_if_defeat_boss(character):
     """
 
     :param user_answer:
     :param answer:
     :return:
     """
-    return user_answer == answer
+
+    return final_boss_battle(character)
 
 
 def is_alive(character):
@@ -346,11 +349,11 @@ def game():
             final_boss = check_if_final_boss(character)
             if final_boss:
                 final_boss_battle(character)
-            mission_complete = check_if_defeat_boss()
+            check_if_defeat_boss(character)
         else:
             print("Sorry you can't go in that direction.")
     if not is_alive(character):
-        print("Sorry, you got 0 HP left and died. Mission Failed.")
+        print("Sorry, you have 0 HP left and died. Mission Failed.")
     else:
         print("Congratulations! Mission accomplished!")
     print("""
