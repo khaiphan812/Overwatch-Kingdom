@@ -190,7 +190,7 @@ def word_puzzle(character):
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is python-related!")
-    words_list = ["python", "function", "aliases", "immutable", "iteration", "dictionary", "tuple", "list", "variable"]
+    words_list = ["python", "function", "aliases", "immutable", "iteration", "dictionary", "tuple", "variable"]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
@@ -324,7 +324,17 @@ def game():
     columns = 5
     board = make_board(rows, columns)
     character = make_character()
-    print("Objective: Move to the bottom right corner of the board without dying.")
+    print("Objective:\n"
+          "Navigate through the Overwatch Land, find the final boss and defeat him to bring back peace for the land.\n"
+          "Overcome challenges on the way to level up.\n"
+          "Once reaching level 3, you will be ready to face Doomfist - the final boss.\n"
+          "Defeat him to complete the mission. Don't let your HP drain out!\n"
+          f"You are currently at Level {character['Level']}.\n"
+          f"Every time you level up, your HP and weapon will be upgraded.\n"
+          f"Your current HP is {character['HP']} and you're holding a {character['Weapon']} as your weapon.\n"
+          f"Every time you overcome a challenge, you'll gain 100 XP.\n"
+          f"You need 300 XP to level up.\n"
+          f"Let's begin your mission. The citizens are relying on you!")
     mission_complete = False
     while is_alive(character) and not mission_complete:
         describe_current_location(board, character)
@@ -348,7 +358,7 @@ def game():
         print("Sorry, you have 0 HP left and died. Mission Failed.")
     else:
         print("Congratulations! Mission Complete!")
-    print("""
+        print("""
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
             ██╔████╔██║██║███████╗███████╗██║██║   ██║██╔██╗ ██║                    
