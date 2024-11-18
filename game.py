@@ -299,17 +299,6 @@ def final_boss_battle(character):
     print('Doomfist has defeated you!')
 
 
-def check_if_defeat_boss(character):
-    """
-
-    :param user_answer:
-    :param answer:
-    :return:
-    """
-
-    return final_boss_battle(character)
-
-
 def is_alive(character):
     """
     Check if the character is still alive.
@@ -380,4 +369,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
