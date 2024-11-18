@@ -23,11 +23,10 @@ def make_board(rows, columns):
      (1, 0): 'Kings Row', (1, 1): 'Hanamura'}
     """
     board = {}
-    descriptions = ['Dorado', 'Havana', 'Route 66', 'Circuit Royal', 'Junkertown',
-                    'Lunar Colony', 'Gibraltar', 'Suravasa', 'Eichenwalde', 'Numbani',
-                    'New Queen Street', 'Hanamura', 'Château Guillard', 'Temple of Anubis', 'Ilios Ruins',
-                    'Black Forest', 'Eco-point', 'Necropolis', 'Ayutthaya', 'Oasis University',
-                    'Esperança', 'Colosseo', 'Kings Row', 'Rialto', 'Lijiang Tower']
+    descriptions = ['Dorado', 'Temple of Anubis', 'Circuit Royal', 'Junkertown',
+                    'Lunar Colony', 'Eichenwalde', 'Numbani', 'Hanamura',
+                    'Château Guillard', 'Havana', 'Ilios Ruins', 'Black Forest',
+                    'Necropolis', 'Kings Row', 'Rialto', 'Lijiang Tower']
     for row in range(rows):
         for column in range(columns):
             board[(row, column)] = random.choice(descriptions)
@@ -159,21 +158,6 @@ def move_character(character, direction):
     return character
 
 
-def check_if_goal_attained(board, character):
-    """
-    Check if the character has reached the destination.
-
-    :param board: a dictionary containing the coordinates and location descriptions of the board
-    :param character: a dictionary containing the player's current location and HP
-    :precondition: board is a dictionary containing key-value pairs of coordinate sets-strings
-    :precondition: character is a dictionary containing the player's current location and HP
-    :postcondition: check if the character has reached the destination
-    :return: True if the character has reached the destination, else False
-
-    """
-
-
-
 def check_for_challenge():
     """
     Determine if the player encounters a foe.
@@ -190,7 +174,6 @@ def challenge_picker(character):
 
     :return:
     """
-
     challenge = random.randint(1, 4)
     if challenge == 1:
         rock_paper_scissors(character)
@@ -207,7 +190,7 @@ def word_puzzle(character):
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is python-related!")
-    words_list = ["pythonic", "function", "aliases", "immutable", "iteration", "dictionary", "tuple"]
+    words_list = ["python", "function", "aliases", "immutable", "iteration", "dictionary", "tuple", "list", "variable"]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
@@ -215,7 +198,7 @@ def word_puzzle(character):
     guess = input("Your guess: ")
     if guess == chosen_word:
         character['XP'] += 100
-        print(f"Correct! You gained 100 XP. Your current is {character['XP']}.")
+        print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
@@ -264,7 +247,7 @@ def rock_paper_scissors(character):
         print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
 
 
-def level_up(character):
+def check_if_level_up(character):
     """
 
     :param character:
@@ -300,16 +283,26 @@ def final_boss_battle(character):
     """
     print("You are now ready to face the Final Boss - Doomfist! You must defeat him to finish the game. Good luck!")
     print("game rule")
-    pass
+    riddle_list = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5'}
+    while character['HP'] > 0:
+        riddle, answer = random.choice(list(riddle_list.items()))
+        user_answer = input('Give your answer: ').lower().strip()
+        if user_answer == answer:
+            print('You have defeated Doomfist!')
+        else:
+            character['HP'] -= 2
+            print(f'You got it wrong. You lost 2 HP. Your current HP is {character['HP']}. Try again.')
+    print('Doomfist has defeated you!')
 
 
-def check_if_defeat_boss(character):
+def check_if_defeat_boss(user_answer, answer):
     """
 
-    :param character:
+    :param user_answer:
+    :param answer:
     :return:
     """
-    return
+    return user_answer == answer
 
 
 def is_alive(character):
@@ -349,11 +342,11 @@ def game():
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
                 challenge_picker(character)
-            level_up(character)
+            check_if_level_up(character)
             final_boss = check_if_final_boss(character)
             if final_boss:
                 final_boss_battle(character)
-            mission_complete = check_if_defeat_boss(character)
+            mission_complete = check_if_defeat_boss()
         else:
             print("Sorry you can't go in that direction.")
     if not is_alive(character):
@@ -372,6 +365,10 @@ def game():
 
 
 def main():
+    """
+    Drive the program.
+    :return:
+    """
     game()
 
 
