@@ -253,13 +253,15 @@ def check_if_level_up(character):
     :param character:
     :return:
     """
-    if character['XP'] >= 300:
+    if character['XP'] >= 300 and character['Level'] == 1:
+        character['Level'] = 2
         character['HP'] += 5
         character['Weapon'] = 'Rocket Hammer'
         print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.\n"
               f"Your weapon has been upgraded to a {character['Weapon']}.")
 
-    if character['XP'] == 600:
+    if character['XP'] == 600 and character['Level'] == 2:
+        character['Level'] = 3
         character['HP'] += 5
         character['Weapon'] = 'Biotic Rifle'
         print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.\n"
@@ -272,7 +274,7 @@ def check_if_final_boss(character):
     :param character:
     :return:
     """
-    return character['XP'] == 600
+    return character['Level'] == 3
 
 
 def final_boss_battle(character):
@@ -349,7 +351,8 @@ def game():
             final_boss = check_if_final_boss(character)
             if final_boss:
                 final_boss_battle(character)
-            check_if_defeat_boss(character)
+                if character['HP'] > 0:
+                    mission_complete = True
         else:
             print("Sorry you can't go in that direction.")
     if not is_alive(character):
