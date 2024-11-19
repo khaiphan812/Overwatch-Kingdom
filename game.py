@@ -357,7 +357,7 @@ def game():
     if not is_alive(character):
         print("Sorry, you have 0 HP left and died. Mission Failed.")
     else:
-        print("Congratulations! Mission Complete!")
+        print("Congratulations! Peace has finally returned on Overwatch Land!")
         print("""
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
