@@ -1,6 +1,6 @@
 """
 Khai Phan
-Overwatch League
+Overwatch Kingdom
 """
 
 import random
@@ -83,18 +83,20 @@ def get_user_direction():
 
     """
     directions = {
-        "1": "North",
-        "2": "South",
-        "3": "East",
-        "4": "West"
+        "w": "North",
+        "s": "South",
+        "d": "East",
+        "a": "West"
     }
     print("Below are the possible directions:")
-    print("1. North\n2. South\n3. East\n4. West")
+    print("W - North\nS - South\nD - East\nA - West")
     while True:
-        user_choice = input("Which direction do you want to go? Input a number: ")
+        user_input = input("Which direction do you want to go? ")
+        user_choice = user_input.lower()
         if user_choice in directions:
             return directions[user_choice]
-        print("Invalid input. Please enter a valid direction.")
+        else:
+            print("Invalid input. Please enter a valid direction.")
 
 
 def validate_move(board, character, direction):
@@ -176,9 +178,9 @@ def challenge_picker(character):
     """
     challenge = random.randint(1, 4)
     if challenge == 1:
-        rock_paper_scissors(character)
+        skill_cast(character)
     elif challenge == 2:
-        roll_dice(character)
+        hostage_rescue(character)
     else:
         word_puzzle(character)
 
@@ -189,7 +191,7 @@ def word_puzzle(character):
     :return:
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
-          "Hint: the word is python-related!")
+          "Hint: the word is VERY python-related!")
     words_list = ["python", "function", "aliases", "immutable", "iteration", "dictionary", "tuple", "variable"]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
@@ -205,41 +207,64 @@ def word_puzzle(character):
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
 
 
-def roll_dice(character):
+def hostage_rescue(character):
     """
 
     :param character:
     :return:
     """
-    print("You're facing Roll the Dice challenge. Guess the correct dice roll to gain XP, otherwise you'll lose 1 HP.")
-    user_guess = int(input('Guess the dice roll (enter a number between 1 and 6): '))
-    dice_roll = random.randint(1, 6)
-    if user_guess == dice_roll:
+    print("Doomfist's minions are holding a number of citizens as hostage.\n"
+          "Guess the correct number of victims they're holding hostage to rescue them, otherwise you'll lose 1 HP.")
+    user_guess = int(input('Guess the number of hostage between 1 and 5: '))
+    hostage_roll = random.randint(1, 5)
+    if user_guess == hostage_roll:
         character['XP'] += 100
-        print(f'You are correct! You have gained 100 XP! Your current is {character['XP']}.')
+        print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
     else:
         character['HP'] -= 1
-        print(f'Wrong! The result is {dice_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
+        print(f'Wrong! The correct number is {hostage_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
 
 
-def rock_paper_scissors(character):
+def skill_cast(character):
     """
 
     :param character:
     :return:
     """
-    print("Welcome to Rock, Paper, Scissors fight. You must win or tie to not lose your HP. Good luck!")
-    options = ['rock', 'paper', 'scissors']
-    user_input = input('Pick between "rock", "paper", or "scissors": ')
-    user_choice = user_input.lower().strip()
-    enemy_choice = random.choice(options)
-    print(f'Your enemy chose {enemy_choice}.')
+    print("Welcome to Skill Cast Battle!\n"
+          "Your enemy and you will each cast a skill.\n"
+          "Whoever casts a more powerful skill wins the battle.\n"
+          "Here are the skills you can cast:\n"
+          "Fortify: Gain temporary health, reducing all damage taken.\n"
+          "Burrow: Move underground and then emerge to deal damage.\n"
+          "Soundwave: Create a blast wave to knock enemies away from you.\n"
+          "Virus: Infect enemies with a projectile that deals damage over time.\n"
+          "Here are the rules:\n"
+          "Fortify beats Burrow.\n"
+          "Burrow beats Soundwave.\n"
+          "Soundwave beats Virus.\n"
+          "Virus beats Fortify.\n"
+          "Soundwave beats Fortify.\n"
+          "Virus beats Burrow.\n"
+          "If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
+    options = ['fortify', 'burrow', 'soundwave', 'virus']
+    user_choice = ""
+    while user_choice not in options:
+        user_input = input("It's time to cast your skill (lowercase acceptable): ")
+        user_choice = user_input.lower().strip()
+        if user_choice not in options:
+            print("Invalid input. Recast a valid skill.")
 
+    enemy_choice = random.choice(options)
+    print(f'Your enemy is casting {enemy_choice.title()}.')
     if user_choice == enemy_choice:
         print(f"It's a tie. You survive another day. You can move on.")
-    elif (user_choice == "rock" and enemy_choice == "scissors") or \
-         (user_choice == "paper" and enemy_choice == "rock") or \
-         (user_choice == "scissors" and enemy_choice == "paper"):
+    elif (user_choice == "fortify" and enemy_choice == "burrow") or \
+         (user_choice == "burrow" and enemy_choice == "soundwave") or \
+         (user_choice == "soundwave" and enemy_choice == "virus") or \
+         (user_choice == "virus" and enemy_choice == "fortify") or \
+         (user_choice == "soundwave" and enemy_choice == "fortify") or \
+         (user_choice == "virus" and enemy_choice == "burrow"):
         character['XP'] += 100
         print(f'You won the fight. You gained 100 XP! Your current is {character['XP']}.')
     else:
@@ -357,7 +382,7 @@ def game():
     if not is_alive(character):
         print("Sorry, you have 0 HP left and died. Mission Failed.")
     else:
-        print("Congratulations! Peace has finally returned on Overwatch Land!")
+        print("Congratulations! Peace has finally returned on Overwatch Kingdom!")
         print("""
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
