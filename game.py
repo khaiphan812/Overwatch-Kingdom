@@ -207,12 +207,12 @@ def word_puzzle(character):
     print("Unscramble the word:", scrambled_word)
     guess = input("Your guess: ")
     if guess == chosen_word:
-        character['XP'] += 100
         print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
+        character['XP'] += 100
     else:
-        character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
+        character["HP"] -= 1
     return character
 
 
@@ -321,9 +321,9 @@ def final_boss_battle(character):
     :return:
     """
     print("You are now ready to face the Final Boss - Doomfist! You must defeat him to finish the game. Good luck!")
-    print("game rule")
-    riddle_list = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
-    cycle = itertools.cycle(riddle_list.items())
+    print("game rule-placeholder")
+    riddle_dict = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
+    cycle = itertools.cycle(riddle_dict.items())
     while character['HP'] > 0:
         riddle, answer = next(cycle)
         print(riddle)
@@ -335,6 +335,7 @@ def final_boss_battle(character):
             print('You have defeated Doomfist!')
             return
     print('Doomfist has defeated you!')
+    return character
 
 
 def is_alive(character):
