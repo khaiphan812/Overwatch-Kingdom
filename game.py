@@ -104,7 +104,6 @@ def get_user_direction():
             return directions[user_choice]
         else:
             print("Invalid input. Please enter a valid direction.")
-        return
 
 
 def validate_move(board, character, direction):
@@ -191,7 +190,7 @@ def challenge_picker(character):
         hostage_rescue(character)
     else:
         word_puzzle(character)
-    return
+    return character
 
 
 def word_puzzle(character):
@@ -214,6 +213,7 @@ def word_puzzle(character):
         character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
+    return character
 
 
 def hostage_rescue(character):
@@ -232,6 +232,7 @@ def hostage_rescue(character):
     else:
         character['HP'] -= 1
         print(f'Wrong! The correct number is {hostage_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
+    return character
 
 
 def skill_cast(character):
@@ -274,11 +275,12 @@ def skill_cast(character):
          (user_choice == "virus" and enemy_choice == "fortify") or \
          (user_choice == "soundwave" and enemy_choice == "fortify") or \
          (user_choice == "virus" and enemy_choice == "burrow"):
-        character['XP'] += 100
         print(f'You won the fight. You gained 100 XP! Your current is {character['XP']}.')
+        character['XP'] += 100
     else:
-        character['HP'] -= 1
         print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
+        character['HP'] -= 1
+    return character
 
 
 def check_if_level_up(character):
