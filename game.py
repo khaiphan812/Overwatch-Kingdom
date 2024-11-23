@@ -227,11 +227,11 @@ def hostage_rescue(character):
     user_guess = int(input('Guess the number of hostage between 1 and 5: '))
     hostage_roll = random.randint(1, 5)
     if user_guess == hostage_roll:
-        character['XP'] += 100
         print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
+        character['XP'] += 100
     else:
-        character['HP'] -= 1
         print(f'Wrong! The correct number is {hostage_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
+        character['HP'] -= 1
     return character
 
 
@@ -302,6 +302,7 @@ def check_if_level_up(character):
         character['Weapon'] = 'Biotic Rifle'
         print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.\n"
               f"Your weapon has been upgraded to a {character['Weapon']}.")
+    return character
 
 
 def check_if_final_boss(character):
