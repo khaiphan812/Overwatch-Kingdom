@@ -63,8 +63,8 @@ def describe_current_location(board, character):
     :precondition: character is a dictionary containing the player's current location and HP
     :postcondition: print the current location of the character
 
-    >>> gameboard = {(0, 0): 'Lijiang Tower', (0, 1): 'Route 66',
-    ...              (1, 0): 'Kings Row', (1, 1): 'Hanamura'}
+    >>> gameboard = {(0, 0): 'Lijiang Tower', (0, 1): 'Circuit Royal',
+    ...              (1, 0): 'Kings Row',     (1, 1): 'Hanamura'}
     >>> char = {"X-coordinate": 0, "Y-coordinate": 1}
     >>> describe_current_location(gameboard, char)
     You have arrived at Route 66.
@@ -104,6 +104,7 @@ def get_user_direction():
             return directions[user_choice]
         else:
             print("Invalid input. Please enter a valid direction.")
+        return
 
 
 def validate_move(board, character, direction):
@@ -117,12 +118,12 @@ def validate_move(board, character, direction):
     :precondition: check if the player can make the desired move
     :return: True if the player can make the move, else False
 
-    >>> validate_move({(0, 0): 'Secret Chamber', (0, 1): 'Dark Tunnel',
-    ...                (1, 0): 'Joy Park',       (1, 1): 'Scary Cave'},
+    >>> validate_move({(0, 0): 'Kings Row',     (0, 1): 'Lijiang Tower',
+    ...                (1, 0): 'Eichenwalde',   (1, 1): 'Hanamura'},
     ...                {"X-coordinate": 0, "Y-coordinate": 1}, "North")
     False
-    >>> validate_move({(0, 0): 'Secret Chamber', (0, 1): 'Dark Tunnel',
-    ...                (1, 0): 'Joy Park',       (1, 1): 'Scary Cave'},
+    >>> validate_move({(0, 0): 'Hanamura',      (0, 1): 'Eichenwalde',
+    ...                (1, 0): 'Circuit Royal', (1, 1): 'Kings Row'},
     ...                {"X-coordinate": 1, "Y-coordinate": 0}, "East")
     True
     """
