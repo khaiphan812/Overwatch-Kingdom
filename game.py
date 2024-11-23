@@ -78,6 +78,7 @@ def describe_current_location(board, character):
     y_coordinate = character["Y-coordinate"]
     description = board[(x_coordinate, y_coordinate)]
     print(f"You have arrived at {description}.")
+    return
 
 
 def get_user_direction():
@@ -263,7 +264,7 @@ def skill_cast(character):
             print("Invalid input. Recast a valid skill.")
 
     enemy_choice = random.choice(options)
-    print(f'Your enemy is casting {enemy_choice.title()}.')
+    print(f'Your enemy casted {enemy_choice.title()}.')
     if user_choice == enemy_choice:
         print(f"It's a tie. You survive another day. You can move on.")
     elif (user_choice == "fortify" and enemy_choice == "burrow") or \
