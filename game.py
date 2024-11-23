@@ -13,7 +13,7 @@ def make_board(rows, columns):
     :param rows: a positive integer
     :param columns: a positive integer
     :precondition: rows and columns must be positive non-zero integers
-    :postcondition: generate sets of coordinates and strings in a dictionary form
+    :postcondition: generate coordinates and location in a dictionary form
     :return: a dictionary containing key-value pairs of coordinate sets-strings
 
     >>> make_board(1, 1)    # doctest: +SKIP
@@ -23,13 +23,13 @@ def make_board(rows, columns):
      (1, 0): 'Kings Row', (1, 1): 'Hanamura'}
     """
     board = {}
-    descriptions = ['Dorado', 'Temple of Anubis', 'Circuit Royal', 'Junkertown',
-                    'Lunar Colony', 'Eichenwalde', 'Numbani', 'Hanamura',
-                    'Château Guillard', 'Havana', 'Ilios Ruins', 'Black Forest',
-                    'Necropolis', 'Kings Row', 'Rialto', 'Lijiang Tower']
+    locations = ['Dorado', 'Temple of Anubis', 'Circuit Royal', 'Junkertown',
+                 'Lunar Colony', 'Eichenwalde', 'Numbani', 'Hanamura',
+                 'Château Guillard', 'Havana', 'Ilios Ruins', 'Black Forest',
+                 'Necropolis', 'Kings Row', 'Rialto', 'Lijiang Tower']
     for row in range(rows):
         for column in range(columns):
-            board[(row, column)] = random.choice(descriptions)
+            board[(row, column)] = random.choice(locations)
 
     print("This is the map of the Overwatch Kingdom:")
     for row in range(rows):
