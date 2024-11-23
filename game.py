@@ -2,7 +2,7 @@
 Khai Phan
 Overwatch Kingdom
 """
-
+import itertools
 import random
 
 
@@ -30,6 +30,12 @@ def make_board(rows, columns):
     for row in range(rows):
         for column in range(columns):
             board[(row, column)] = random.choice(descriptions)
+
+    print("This is the map of the Overwatch Kingdom:")
+    for row in range(rows):
+        for column in range(columns):
+            print(f"({row}, {column}): {board[(row, column)]:<20}", end=" ")
+        print()
     return board
 
 
@@ -183,6 +189,7 @@ def challenge_picker(character):
         hostage_rescue(character)
     else:
         word_puzzle(character)
+    return
 
 
 def word_puzzle(character):
@@ -192,7 +199,7 @@ def word_puzzle(character):
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is VERY python-related!")
-    words_list = ["python", "function", "aliases", "immutable", "iteration", "dictionary", "tuple", "variable"]
+    words_list = ["python", "function", "aliases", "immutable", "itertools", "dictionary", "tuple", "variable"]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
@@ -310,9 +317,10 @@ def final_boss_battle(character):
     """
     print("You are now ready to face the Final Boss - Doomfist! You must defeat him to finish the game. Good luck!")
     print("game rule")
-    riddle_list = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5'}
+    riddle_list = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
+    cycle = itertools.cycle(riddle_list.items())
     while character['HP'] > 0:
-        riddle, answer = random.choice(list(riddle_list.items()))
+        riddle, answer = next(cycle)
         print(riddle)
         user_answer = input('Give your answer: ').lower().strip()
         if user_answer != answer:
