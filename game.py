@@ -78,7 +78,7 @@ def describe_current_location(board, character):
     y_coordinate = character["Y-coordinate"]
     description = board[(x_coordinate, y_coordinate)]
     print(f"You have arrived at {description}.")
-    return
+    return character
 
 
 def get_user_direction():
@@ -207,12 +207,12 @@ def word_puzzle(character):
     print("Unscramble the word:", scrambled_word)
     guess = input("Your guess: ")
     if guess == chosen_word:
-        print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
         character['XP'] += 100
+        print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
     else:
+        character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
-        character["HP"] -= 1
     return character
 
 
@@ -227,11 +227,11 @@ def hostage_rescue(character):
     user_guess = int(input('Guess the number of hostage between 1 and 5: '))
     hostage_roll = random.randint(1, 5)
     if user_guess == hostage_roll:
-        print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
         character['XP'] += 100
+        print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
     else:
-        print(f'Wrong! The correct number is {hostage_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
         character['HP'] -= 1
+        print(f'Wrong! The correct number is {hostage_roll}. You just lost 1 HP. Your current HP is {character['HP']}.')
     return character
 
 
@@ -275,11 +275,11 @@ def skill_cast(character):
          (user_choice == "virus" and enemy_choice == "fortify") or \
          (user_choice == "soundwave" and enemy_choice == "fortify") or \
          (user_choice == "virus" and enemy_choice == "burrow"):
-        print(f'You won the fight. You gained 100 XP! Your current is {character['XP']}.')
         character['XP'] += 100
+        print(f'You won the fight. You gained 100 XP! Your current XP is {character['XP']}.')
     else:
-        print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
         character['HP'] -= 1
+        print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
     return character
 
 
