@@ -53,6 +53,20 @@ def make_character():
     return {'X-coordinate': 0, 'Y-coordinate': 0, 'HP': 5, 'XP': 0, 'Level': 1, 'Weapon': 'Dragon Blade'}
 
 
+def make_final_boss():
+    """
+    Create a dictionary containing the boss' HP level and weapon name.
+
+    :postcondition: create the HP level and weapon name for the final boss
+    :return: a dictionary containing HP level and weapon name for the final boss
+
+    >>> doom = make_final_boss()
+    >>> doom
+    {'HP': 10, 'Weapon': 'Destructive Flail'}
+    """
+    return {'HP': 10, 'Weapon': 'Destructive Flail'}
+
+
 def describe_current_location(board, character):
     """
     Describe the current location of the player.
@@ -329,13 +343,13 @@ def check_if_final_boss(board, character):
         return False
 
 
-def final_boss_battle(character):
+def final_boss_battle(character, doom):
     """
 
     :param character:
+    :param doom:
     :return:
     """
-    doom = {'HP': 10, 'Weapon': 'Destructive Flail'}
     print("You are now ready to face the Final Boss - Master Doom! You must defeat him to finish the game. Good luck!")
     print("game rule-placeholder")
     riddle_dict = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
@@ -384,6 +398,7 @@ def game():
     columns = 5
     board = make_board(rows, columns)
     character = make_character()
+    doom = make_final_boss()
     print("Objective:\n"
           "Navigate through the Overwatch Kingdom, overcome challenges on the way to level up.\n"
           "Upon reaching level 3 and arrive at the bottom right of the map,"
@@ -409,7 +424,7 @@ def game():
             check_if_level_up(character)
             final_boss = check_if_final_boss(board, character)
             if final_boss:
-                final_boss_battle(character)
+                final_boss_battle(character, doom)
                 if character['HP'] > 0:
                     mission_complete = True
         else:
