@@ -214,7 +214,7 @@ def word_puzzle(character):
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is VERY python-related!")
-    words_list = ['python', 'function', 'aliases',
+    words_list = ['pythonic', 'function', 'aliases',
                   'immutable', 'itertools', 'iteration',
                   'dictionary', 'tuple', 'variable',
                   'decorator', 'package', 'exception',
