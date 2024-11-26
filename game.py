@@ -455,7 +455,6 @@ def game():
 def main():
     """
     Drive the program.
-    :return:
     """
     game()
 
