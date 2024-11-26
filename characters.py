@@ -2,8 +2,8 @@ def make_character():
     """
     Create a dictionary containing "X-coordinate": 0, "Y-coordinate": 0, and "Current HP": 5.
 
-    :postcondition: create the X & Y coordinates and Current HP level for the character
-    :return: a dictionary containing X & Y-coordinates and Current HP level of the character
+    :postcondition: create the X & Y coordinates, HP, XP, and Weapon of the character
+    :return: a dictionary containing X & Y coordinates, HP, XP, and Weapon of the character
 
     >>> player = make_character()
     >>> player
@@ -30,14 +30,14 @@ def is_alive(character):
     """
     Check if the character is still alive.
 
-    :param character: a dictionary containing the player's current location and HP
-    :precondition: character is a dictionary containing the player's current location and HP
-    :postcondition: check if the Current HP reaches zero
-    :return: True if character is still alive, else False
+    :param character: a dictionary containing the character's stats
+    :precondition: character is a dictionary
+    :postcondition: check if the character's HP reaches zero
+    :return: True if character's HP is greater than zero, else False
 
-    >>> is_alive({"HP": 0})
+    >>> is_alive({'HP': 0})
     False
-    >>> is_alive({"HP": 1})
+    >>> is_alive({'HP': 1})
     True
     """
     return character["HP"] > 0
@@ -45,9 +45,19 @@ def is_alive(character):
 
 def check_if_level_up(character):
     """
+    Check if the character reaches the next level.
 
-    :param character:
-    :return:
+    :param character: a dictionary containing the character's stats
+    :precondition: character is a dictionary
+    :postcondition: check if the character reaches the next level
+    :return: the character's updated Level, HP, Weapon stats
+
+    >>> char = check_if_level_up({'HP': 5, 'XP': 400, 'Level': 1, 'Weapon': 'Magic Sword'})
+    You just reached level 2. Your HP increases by 5. Your current HP is 10.
+    Your weapon has been upgraded to a Rocket Hammer.
+    >>> char = check_if_level_up({'HP': 7, 'XP': 600, 'Level': 2, 'Weapon': 'Rocket Hammer'})
+    You just reached level 3. Your HP increases by 5. Your current HP is 12.
+    Your weapon has been upgraded to a Biotic Rifle.
     """
     if character['XP'] >= 300 and character['Level'] == 1:
         character['Level'] = 2

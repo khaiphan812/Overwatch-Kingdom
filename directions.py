@@ -3,8 +3,7 @@ def get_user_direction():
     Return the direction the player wishes to go.
 
     :postcondition: acquire the direction the player wants to go
-    :return: the direction the player wishes to go
-
+    :return: the direction the player wants to go
     """
     directions = {
         "w": "North",
@@ -27,11 +26,13 @@ def validate_move(board, character, direction):
     """
     Determine if the player can make the desired move.
 
-    :param board: a dictionary containing key-value pairs of coordinate sets-strings
-    :param character: a dictionary containing the player's current location and HP
-    :param direction: the direction the player wishes to go
-    :precondition: character is a dictionary containing the player's current location and HP
-    :precondition: check if the player can make the desired move
+    :param board: a dictionary containing key-value pairs of tuples-strings depicting coordinates and locations
+    :param character: a dictionary containing the character's stats
+    :param direction: the direction the player wants to go
+    :precondition: board is a dictionary
+    :precondition: character is a dictionary
+    :precondition: direction is a string
+    :postcondition: check if the player can make the desired move
     :return: True if the player can make the move, else False
 
     >>> validate_move({(0, 0): 'Kings Row',     (0, 1): 'Lijiang Tower',
@@ -62,11 +63,12 @@ def move_character(character, direction):
     """
     Update the character's new X- and Y-coordinates after the move.
 
-    :param character: a dictionary containing the player's current location and HP
-    :param direction: the direction the player wishes to go
-    :precondition: direction must be a string that is either "North" or "South" or "East" or "West"
+    :param character: a dictionary containing the character's stats
+    :param direction: the direction the player wants to go
+    :precondition: character is a dictionary
+    :precondition: direction is a string
     :postcondition: character moves to a new location within board bounds
-    :postcondition: update character's new X- and Y-coordinates
+    :return: the character's updated coordinates stats
 
     >>> move_character({'X-coordinate': 0, 'Y-coordinate': 1}, 'South')
     {'X-coordinate': 1, 'Y-coordinate': 1}

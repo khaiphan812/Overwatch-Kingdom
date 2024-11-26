@@ -7,7 +7,7 @@ def check_for_challenge():
     Determine if the player encounters a challenge.
 
     :postcondition: determine if the player encounters a challenge
-    :return: True if the player encounters a challenge, else False
+    :return: True if the randomized result is equal to 1, else False
 
     """
     return random.randint(1, 2) == 1
@@ -15,8 +15,13 @@ def check_for_challenge():
 
 def challenge_picker(character):
     """
+    Determine the challenge the player is going to face.
 
-    :return:
+    :param character: a dictionary containing the player's stats
+    :precondition: character is a dictionary
+    :postcondition: call the function based on the randomized result
+    :return: character's stats
+
     """
     challenge = random.randint(1, 4)
     if challenge == 1:
@@ -30,8 +35,13 @@ def challenge_picker(character):
 
 def word_puzzle(character):
     """
+    Ask the player to re-arrange a scrambled word back to the correct order.
 
-    :return:
+    :param character: a dictionary containing the character's stats
+    :precondition: character is a dictionary
+    :postcondition: update the character's stats based on challenge's result
+    :return: the character's updated XP and/or HP stats
+
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is VERY python-related!")
@@ -59,9 +69,13 @@ def word_puzzle(character):
 
 def hostage_rescue(character):
     """
+    Ask the player to guess the correct number of victims held hostage by the enemy.
 
-    :param character:
-    :return:
+    :param character: a dictionary containing the character's stats
+    :precondition: character is a dictionary
+    :postcondition: update the character's stats based on challenge's result
+    :return: the character's updated XP and/or HP stats
+
     """
     print("Master Doom's minions are holding a number of citizens as hostage.\n"
           "Guess the correct number of victims they're holding hostage to rescue them, otherwise you'll lose 1 HP.")
@@ -86,12 +100,16 @@ def hostage_rescue(character):
 
 def skill_cast(character):
     """
+    Ask the player to select a skill to fight against the enemy.
 
-    :param character:
-    :return:
+    :param character: a dictionary containing the character's stats
+    :precondition: character is a dictionary
+    :postcondition: update the character's stats based on challenge's result
+    :return: the character's updated XP and/or HP stats
+
     """
-    print("Welcome to Skill Cast Battle!\n"
-          "Your enemy and you will each cast a skill.\n"
+    print("You have a skill battle against Sigma - Master Doom's sidekick.\n"
+          "You and Sigma will each cast a skill.\n"
           "Whoever casts a more powerful skill wins the battle.\n"
           "Here are the skills you can cast:\n"
           "Fortify: Gain temporary health, reducing all damage taken.\n"
@@ -134,10 +152,14 @@ def skill_cast(character):
 
 def check_if_final_boss(board, character):
     """
+    Check if the character is ready to face the final boss.
 
-    :param character:
-    :param board:
-    :return:
+    :param board: a dictionary containing tuple-string pairs describing coordinates and locations
+    :param character: a dictionary containing the character's stats
+    :precondition: board is a dictionary
+    :precondition: character is a dictionary
+    :postcondition: check if the character is ready to face the final boss
+    :return: True if the character's level is 3 and the character is at the bottom right location, else False
 
     """
     max_row = max(key[0] for key in board.keys())
@@ -152,10 +174,15 @@ def check_if_final_boss(board, character):
 
 def final_boss_battle(character, doom):
     """
+    Ask the player to answer a sequence of riddles from the final boss.
 
-    :param character:
-    :param doom:
-    :return:
+    :param character: a dictionary containing the character's stats
+    :param doom: a dictionary containing Master Doom's stats
+    :precondition: character is a dictionary
+    :precondition: doom is a dictionary
+    :postcondition: update the character's stats based on challenge's result
+    :return: the character's updated stats
+
     """
     print("You are now ready to face the Final Boss - Master Doom! "
           "You must defeat him to finish the game. Good luck!")
