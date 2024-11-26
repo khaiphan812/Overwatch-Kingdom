@@ -6,8 +6,8 @@ def check_for_challenge():
     """
     Determine if the player encounters a challenge.
 
-    :postcondition: determine if the player will encounter a foe
-    :return: True if the player encounters a foe, else False
+    :postcondition: determine if the player encounters a challenge
+    :return: True if the player encounters a challenge, else False
 
     """
     return random.randint(1, 2) == 1
