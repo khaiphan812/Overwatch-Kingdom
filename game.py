@@ -335,7 +335,7 @@ def final_boss_battle(character):
     :param character:
     :return:
     """
-    doom = {'HP': 10, 'Weapon': 'Incendiary Blaster'}
+    doom = {'HP': 10, 'Weapon': 'Destructive Flail'}
     print("You are now ready to face the Final Boss - Master Doom! You must defeat him to finish the game. Good luck!")
     print("game rule-placeholder")
     riddle_dict = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
@@ -346,7 +346,7 @@ def final_boss_battle(character):
         user_answer = input('Your answer: ').lower().strip()
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
-            print(f'Wrong. Master Doom just struck you with his Destructive Flail.\n'
+            print(f'Wrong. Master Doom just struck you with his {doom['Weapon']}.\n'
                   f'You lost 2 HP. Your have {character['HP']} HP left.')
         else:
             doom['HP'] = max(0, doom['HP'] - 2)
@@ -385,10 +385,10 @@ def game():
     board = make_board(rows, columns)
     character = make_character()
     print("Objective:\n"
-          "Navigate through the Overwatch Land, find the final boss and defeat him to bring back peace for the land.\n"
-          "Overcome challenges on the way to level up.\n"
-          "Once reaching level 3, you will be ready to face Master Doom - the final boss.\n"
-          "Defeat him to complete the mission. Don't let your HP drain out!\n"
+          "Navigate through the Overwatch Kingdom, overcome challenges on the way to level up.\n"
+          "Upon reaching level 3 and arrive at the bottom right of the map,"
+          "you will face Master Doom - the final boss.\n"
+          "You must kill him before he kills you. Defeat him to complete the mission.\n"
           f"You are currently at Level {character['Level']}.\n"
           f"Every time you level up, your HP and weapon will be upgraded.\n"
           f"Your current HP is {character['HP']} and you're holding a {character['Weapon']} as your weapon.\n"
