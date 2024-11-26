@@ -222,7 +222,7 @@ def word_puzzle(character):
     guess = input("Your guess: ")
     if guess == chosen_word:
         character['XP'] = min(600, character['XP'] + 100)
-        print(f"Correct! You gained 100 XP (Max 600 XP). Your current XP is {character['XP']}.")
+        print(f"Correct! You gained 100 XP (max 600 XP). Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
         print(f"Wrong! The correct word was: {chosen_word}\n"
@@ -248,7 +248,7 @@ def hostage_rescue(character):
             print("Invalid input. Please enter an integer between 1 and 5.")
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
-        print(f'Correct! You just rescued the victims and gained 100 XP (Max 600 XP)! '
+        print(f'Correct! You just rescued the victims and gained 100 XP (max 600 XP)! '
               f'Your current XP is {character['XP']}.')
     else:
         character['HP'] -= 1
@@ -298,7 +298,7 @@ def skill_cast(character):
          (user_choice == "soundwave" and enemy_choice == "fortify") or \
          (user_choice == "virus" and enemy_choice == "burrow"):
         character['XP'] = min(600, character['XP'] + 100)
-        print(f'You won the fight. You gained 100 XP! Your current XP is {character['XP']}.')
+        print(f'You won the fight. You gained 100 XP (max 600 XP)! Your current XP is {character['XP']}.')
     else:
         character['HP'] -= 1
         print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
@@ -352,9 +352,27 @@ def final_boss_battle(character, doom):
     :param doom:
     :return:
     """
-    print("You are now ready to face the Final Boss - Master Doom! You must defeat him to finish the game. Good luck!")
-    print("game rule-placeholder")
-    riddle_dict = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
+    print("You are now ready to face the Final Boss - Master Doom! "
+          "You must defeat him to finish the game. Good luck!")
+    print("Master Doom is a riddle master...no 'a/an/the'")
+    riddle_dict = {'I speak without a mouth and hear without ears. '
+                   'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
+                   'I am not alive, but I can grow; I don’t have lungs, but I need air; '
+                   'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
+                   'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
+                   'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+                   'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
+                   'and a head that doesn’t think? (9 letters)': 'artichoke',
+                   'I’m always in front of you but can never be seen. What am I? (6 letters)': 'future',
+                   'The more you take out of me, the bigger I get. What am I? (4 letters)': 'hole',
+                   'I have many teeth but cannot bite. What am I? (4 letters)': 'comb',
+                   'What has no beginning, end, or middle? (6 letters)': 'circle',
+                   'I can be cracked, made, told, and played. What am I? (4 letters)': 'joke',
+                   'What is harder to catch the faster you run? (6 letters)': 'breath',
+                   'The maker doesn’t want it. The buyer doesn’t use it. '
+                   'The user doesn’t know it. What am I? (6 letters)': 'coffin',
+                   'The more you have of me, the less you see. What am I? (8 letters)': 'darkness'
+                   }
     cycle = itertools.cycle(riddle_dict.items())
     while character['HP'] > 0 and doom['HP'] > 0:
         riddle, answer = next(cycle)
@@ -362,7 +380,7 @@ def final_boss_battle(character, doom):
         user_answer = input('Your answer: ').lower().strip()
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
-            print(f'Wrong. Master Doom just struck you with his {doom['Weapon']}.\n'
+            print(f'Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n'
                   f'You lost 2 HP. You have {character['HP']} HP left.')
         else:
             doom['HP'] = max(0, doom['HP'] - 2)
