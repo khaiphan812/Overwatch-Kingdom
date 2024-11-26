@@ -222,11 +222,17 @@ def hostage_rescue(character):
     :param character:
     :return:
     """
-    print("Doomfist's minions are holding a number of citizens as hostage.\n"
+    print("Master Doom's minions are holding a number of citizens as hostage.\n"
           "Guess the correct number of victims they're holding hostage to rescue them, otherwise you'll lose 1 HP.")
-    user_guess = int(input('Guess the number of hostage between 1 and 5: '))
+
     hostage_roll = random.randint(1, 5)
-    if user_guess == hostage_roll:
+    options = ['1', '2', '3', '4', '5']
+    user_guess = ""
+    while user_guess not in options:
+        user_guess = input('Guess the number of hostage between 1 and 5: ')
+        if user_guess not in options:
+            print("Invalid input. Please enter an integer between 1 and 5.")
+    if int(user_guess) == hostage_roll:
         character['XP'] += 100
         print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
     else:
@@ -305,13 +311,22 @@ def check_if_level_up(character):
     return character
 
 
-def check_if_final_boss(character):
+def check_if_final_boss(board, character):
     """
 
     :param character:
+    :param board:
     :return:
+
     """
-    return character['Level'] == 3
+    max_row = max(key[0] for key in board.keys())
+    max_col = max(key[1] for key in board.keys())
+    if (character["X-coordinate"] == max_row and
+            character["Y-coordinate"] == max_col and
+            character['Level'] == 3):
+        return True
+    else:
+        return False
 
 
 def final_boss_battle(character):
@@ -320,21 +335,27 @@ def final_boss_battle(character):
     :param character:
     :return:
     """
-    print("You are now ready to face the Final Boss - Doomfist! You must defeat him to finish the game. Good luck!")
+    doom = {'HP': 10, 'Weapon': 'Incendiary Blaster'}
+    print("You are now ready to face the Final Boss - Master Doom! You must defeat him to finish the game. Good luck!")
     print("game rule-placeholder")
     riddle_dict = {'Q1': '1', 'Q2': '2', 'Q3': '3', 'Q4': '4', 'Q5': '5', 'Q6': '6', 'Q7': '7', 'Q8': '8'}
     cycle = itertools.cycle(riddle_dict.items())
-    while character['HP'] > 0:
+    while character['HP'] > 0 and doom['HP'] > 0:
         riddle, answer = next(cycle)
         print(riddle)
-        user_answer = input('Give your answer: ').lower().strip()
+        user_answer = input('Your answer: ').lower().strip()
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
-            print(f'You got it wrong. You lost 2 HP. Your have {character['HP']} left.')
+            print(f'Wrong. Master Doom just struck you with his Destructive Flail.\n'
+                  f'You lost 2 HP. Your have {character['HP']} HP left.')
         else:
-            print('You have defeated Doomfist!')
-            return
-    print('Doomfist has defeated you!')
+            doom['HP'] = max(0, doom['HP'] - 2)
+            print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
+                  f"He lost 2 HP and now has {doom['HP']} HP left.")
+    if character['HP'] == 0:
+        print('You have fallen before Master Doom.')
+    elif doom['HP'] == 0:
+        print('You have defeated Master Doom!')
     return character
 
 
@@ -366,7 +387,7 @@ def game():
     print("Objective:\n"
           "Navigate through the Overwatch Land, find the final boss and defeat him to bring back peace for the land.\n"
           "Overcome challenges on the way to level up.\n"
-          "Once reaching level 3, you will be ready to face Doomfist - the final boss.\n"
+          "Once reaching level 3, you will be ready to face Master Doom - the final boss.\n"
           "Defeat him to complete the mission. Don't let your HP drain out!\n"
           f"You are currently at Level {character['Level']}.\n"
           f"Every time you level up, your HP and weapon will be upgraded.\n"
@@ -386,7 +407,7 @@ def game():
             if there_is_a_challenger:
                 challenge_picker(character)
             check_if_level_up(character)
-            final_boss = check_if_final_boss(character)
+            final_boss = check_if_final_boss(board, character)
             if final_boss:
                 final_boss_battle(character)
                 if character['HP'] > 0:
@@ -396,7 +417,7 @@ def game():
     if not is_alive(character):
         print("Sorry, you have 0 HP left and died. Mission Failed.")
     else:
-        print("Congratulations! Peace has finally returned on Overwatch Kingdom!")
+        print("Congratulations! Peace has finally returned to Overwatch Kingdom!")
         print("""
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
