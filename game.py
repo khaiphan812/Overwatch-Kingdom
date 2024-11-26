@@ -207,7 +207,7 @@ def word_puzzle(character):
     print("Unscramble the word:", scrambled_word)
     guess = input("Your guess: ")
     if guess == chosen_word:
-        character['XP'] += 100
+        character['XP'] = min(600, character['XP'] + 100)
         print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
@@ -233,7 +233,7 @@ def hostage_rescue(character):
         if user_guess not in options:
             print("Invalid input. Please enter an integer between 1 and 5.")
     if int(user_guess) == hostage_roll:
-        character['XP'] += 100
+        character['XP'] = min(600, character['XP'] + 100)
         print(f'Correct! You just rescued the victims and gained 100 XP! Your current XP is {character['XP']}.')
     else:
         character['HP'] -= 1
@@ -281,7 +281,7 @@ def skill_cast(character):
          (user_choice == "virus" and enemy_choice == "fortify") or \
          (user_choice == "soundwave" and enemy_choice == "fortify") or \
          (user_choice == "virus" and enemy_choice == "burrow"):
-        character['XP'] += 100
+        character['XP'] = min(600, character['XP'] + 100)
         print(f'You won the fight. You gained 100 XP! Your current XP is {character['XP']}.')
     else:
         character['HP'] -= 1
@@ -415,7 +415,7 @@ def game():
         else:
             print("Sorry you can't go in that direction.")
     if not is_alive(character):
-        print("Sorry, you have 0 HP left and died. Mission Failed.")
+        print("Sorry, you died. Mission Failed.")
     else:
         print("Congratulations! Peace has finally returned to Overwatch Kingdom!")
         print("""
