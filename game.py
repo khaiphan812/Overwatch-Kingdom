@@ -347,11 +347,11 @@ def final_boss_battle(character):
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
             print(f'Wrong. Master Doom just struck you with his {doom['Weapon']}.\n'
-                  f'You lost 2 HP. Your have {character['HP']} HP left.')
+                  f'You lost 2 HP. You have {character['HP']} HP left.')
         else:
             doom['HP'] = max(0, doom['HP'] - 2)
             print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
-                  f"He lost 2 HP and now has {doom['HP']} HP left.")
+                  f"He lost 2 HP and has {doom['HP']} HP left.")
     if character['HP'] == 0:
         print('You have fallen before Master Doom.')
     elif doom['HP'] == 0:
