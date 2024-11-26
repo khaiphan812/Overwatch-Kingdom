@@ -84,9 +84,12 @@ def hostage_rescue(character):
     options = ['1', '2', '3', '4', '5']
     user_guess = ""
     while user_guess not in options:
-        user_guess = input('Guess the number of hostage between 1 and 5: ')
-        if user_guess not in options:
-            print("Invalid input. Please enter an integer between 1 and 5.")
+        try:
+            user_guess = input('Guess the number of hostage between 1 and 5: ')
+        except ValueError:
+            print("You must enter a positive integer!")
+            if user_guess not in options:
+                print("Invalid input. Please enter an integer between 1 and 5.")
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
         print(f'Correct! You just rescued the victims and gained 100 XP (max 600 XP)! '
