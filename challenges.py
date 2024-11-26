@@ -4,7 +4,7 @@ import itertools
 
 def check_for_challenge():
     """
-    Determine if the player encounters a foe.
+    Determine if the player encounters a challenge.
 
     :postcondition: determine if the player will encounter a foe
     :return: True if the player encounters a foe, else False
