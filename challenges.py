@@ -213,7 +213,11 @@ def final_boss_battle(character, doom):
     """
     print("You are now ready to face the Final Boss - Master Doom! "
           "You must defeat him to finish the game. Good luck!")
-    print("Master Doom is a riddle master...no 'a/an/the'")
+    print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
+          "Everytime you get a question right, you'll strip 2 HP off him.\n"
+          "If you get it wrong, he'll strike you and take away 2 HP.\n"
+          "All one-word answers, no articles (a/an/the) required.\n"
+          "To kill or to be killed. Let's begin!\n")
     riddles = {'I speak without a mouth and hear without ears. '
                'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
                'I am not alive, but I can grow; I don’t have lungs, but I need air; '
