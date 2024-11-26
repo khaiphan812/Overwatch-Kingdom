@@ -161,6 +161,30 @@ def check_if_final_boss(board, character):
     :postcondition: check if the character is ready to face the final boss
     :return: True if the character's level is 3 and the character is at the bottom right location, else False
 
+    >>> gameboard = {
+    ...      (0, 0): 'Havana',
+    ...      (0, 1): 'Rialto',
+    ...      (4, 4): 'Dorado',
+    ... }
+    >>> char = {'X-coordinate': 0, 'Y-coordinate': 1, 'Level': 3}
+    >>> check_if_final_boss(gameboard, char)
+    False
+    >>> gameboard = {
+    ...      (0, 0): 'Havana',
+    ...      (0, 1): 'Rialto',
+    ...      (4, 4): 'Dorado',
+    ... }
+    >>> char = {'X-coordinate': 4, 'Y-coordinate': 4, 'Level': 2}
+    >>> check_if_final_boss(gameboard, char)
+    False
+    >>> gameboard = {
+    ...      (0, 0): 'Havana',
+    ...      (0, 1): 'Rialto',
+    ...      (4, 4): 'Dorado',
+    ... }
+    >>> char = {'X-coordinate': 4, 'Y-coordinate': 4, 'Level': 3}
+    >>> check_if_final_boss(gameboard, char)
+    True
     """
     max_row = max(key[0] for key in board.keys())
     max_col = max(key[1] for key in board.keys())
