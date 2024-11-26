@@ -214,7 +214,13 @@ def word_puzzle(character):
     """
     print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
           "Hint: the word is VERY python-related!")
-    words_list = ["python", "function", "aliases", "immutable", "itertools", "dictionary", "tuple", "variable"]
+    words_list = ['python', 'function', 'aliases',
+                  'immutable', 'itertools', 'iteration',
+                  'dictionary', 'tuple', 'variable',
+                  'decorator', 'package', 'exception',
+                  'module', 'argument', 'parameter',
+                  'recursion', 'closure', 'readability',
+                  'reusability', 'compiler', 'debugger']
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
@@ -355,25 +361,25 @@ def final_boss_battle(character, doom):
     print("You are now ready to face the Final Boss - Master Doom! "
           "You must defeat him to finish the game. Good luck!")
     print("Master Doom is a riddle master...no 'a/an/the'")
-    riddle_dict = {'I speak without a mouth and hear without ears. '
-                   'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
-                   'I am not alive, but I can grow; I don’t have lungs, but I need air; '
-                   'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
-                   'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
-                   'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
-                   'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
-                   'and a head that doesn’t think? (9 letters)': 'artichoke',
-                   'I’m always in front of you but can never be seen. What am I? (6 letters)': 'future',
-                   'The more you take out of me, the bigger I get. What am I? (4 letters)': 'hole',
-                   'I have many teeth but cannot bite. What am I? (4 letters)': 'comb',
-                   'What has no beginning, end, or middle? (6 letters)': 'circle',
-                   'I can be cracked, made, told, and played. What am I? (4 letters)': 'joke',
-                   'What is harder to catch the faster you run? (6 letters)': 'breath',
-                   'The maker doesn’t want it. The buyer doesn’t use it. '
-                   'The user doesn’t know it. What am I? (6 letters)': 'coffin',
-                   'The more you have of me, the less you see. What am I? (8 letters)': 'darkness'
-                   }
-    cycle = itertools.cycle(riddle_dict.items())
+    riddles = {'I speak without a mouth and hear without ears. '
+               'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
+               'I am not alive, but I can grow; I don’t have lungs, but I need air; '
+               'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
+               'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
+               'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+               'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
+               'and a head that doesn’t think? (9 letters)': 'artichoke',
+               'I’m always in front of you but can never be seen. What am I? (6 letters)': 'future',
+               'The more you take out of me, the bigger I get. What am I? (4 letters)': 'hole',
+               'I have many teeth but cannot bite. What am I? (4 letters)': 'comb',
+               'What has no beginning, end, or middle? (6 letters)': 'circle',
+               'I can be cracked, made, told, and played. What am I? (4 letters)': 'joke',
+               'What is harder to catch the faster you run? (6 letters)': 'breath',
+               'The maker doesn’t want it. The buyer doesn’t use it. '
+               'The user doesn’t know it. What am I? (6 letters)': 'coffin',
+               'The more you have of me, the less you see. What am I? (8 letters)': 'darkness'
+               }
+    cycle = itertools.cycle(riddles.items())
     while character['HP'] > 0 and doom['HP'] > 0:
         riddle, answer = next(cycle)
         print(riddle)
