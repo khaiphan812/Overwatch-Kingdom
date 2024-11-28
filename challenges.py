@@ -78,7 +78,8 @@ def hostage_rescue(character):
 
     """
     print("Master Doom's minions are holding a number of citizens as hostage.\n"
-          "Guess the correct number of victims they're holding hostage to rescue them, otherwise you'll lose 1 HP.")
+          "Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.\n"
+          "Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!")
 
     hostage_roll = random.randint(1, 5)
     options = ['1', '2', '3', '4', '5']
