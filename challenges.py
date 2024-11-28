@@ -139,12 +139,12 @@ def skill_cast(character):
     print(f'Your enemy casted {enemy_choice.title()}.')
     if user_choice == enemy_choice:
         print(f"It's a tie. You survive another day. You can move on.")
-    elif (user_choice == "fortify" and enemy_choice == "burrow") or \
-         (user_choice == "burrow" and enemy_choice == "soundwave") or \
-         (user_choice == "soundwave" and enemy_choice == "virus") or \
-         (user_choice == "virus" and enemy_choice == "fortify") or \
-         (user_choice == "soundwave" and enemy_choice == "fortify") or \
-         (user_choice == "virus" and enemy_choice == "burrow"):
+    elif (user_choice == 'fortify' and enemy_choice == 'burrow') or \
+         (user_choice == 'burrow' and enemy_choice == 'soundwave') or \
+         (user_choice == 'soundwave' and enemy_choice == 'virus') or \
+         (user_choice == 'virus' and enemy_choice == 'fortify') or \
+         (user_choice == 'soundwave' and enemy_choice == 'fortify') or \
+         (user_choice == 'virus' and enemy_choice == 'burrow'):
         character['XP'] = min(600, character['XP'] + 100)
         print(f'You won the fight. You gained 100 XP (max 600 XP)! Your current XP is {character['XP']}.')
     else:
@@ -211,8 +211,8 @@ def final_boss_battle(character, doom):
     :return: the character's updated stats
 
     """
-    print("You are now ready to face the Final Boss - Master Doom! "
-          "You must defeat him to finish the game. Good luck!")
+    print("You are now ready to face the final boss - Master Doom!\n"
+          "You must defeat him to finish the game.")
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
           "Everytime you get a question right, you'll strip 2 HP off him.\n"
           "If you get it wrong, he'll strike you and take away 2 HP.\n"
@@ -240,7 +240,7 @@ def final_boss_battle(character, doom):
     while character['HP'] > 0 and doom['HP'] > 0:
         riddle, answer = next(cycle)
         print(riddle)
-        user_answer = input('Your answer: ').lower().strip()
+        user_answer = input("Your answer: ").lower().strip()
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
             print(f'Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n'
@@ -250,7 +250,7 @@ def final_boss_battle(character, doom):
             print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
                   f"He lost 2 HP and has {doom['HP']} HP left.")
     if character['HP'] == 0:
-        print('You have fallen before Master Doom.')
+        print("You have fallen before Master Doom.")
     elif doom['HP'] == 0:
-        print('You have defeated Master Doom!')
+        print("You have defeated Master Doom!")
     return character
