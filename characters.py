@@ -40,7 +40,7 @@ def is_alive(character):
     >>> is_alive({'HP': 1})
     True
     """
-    return character["HP"] > 0
+    return character['HP'] > 0
 
 
 def check_if_level_up(character):
