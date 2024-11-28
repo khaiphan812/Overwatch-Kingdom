@@ -191,8 +191,8 @@ def check_if_final_boss(board, character):
     """
     max_row = max(key[0] for key in board.keys())
     max_col = max(key[1] for key in board.keys())
-    if (character["X-coordinate"] == max_row and
-            character["Y-coordinate"] == max_col and
+    if (character['X-coordinate'] == max_row and
+            character['Y-coordinate'] == max_col and
             character['Level'] == 3):
         return True
     else:
