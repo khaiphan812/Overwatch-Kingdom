@@ -20,6 +20,10 @@ class Test(TestCase):
         result = make_character()
         self.assertIn('XP', result)
 
+    def test_make_character_contains_Level_key(self):
+        result = make_character()
+        self.assertIn('Level', result)
+
     def test_make_character_contains_Weapon_key(self):
         result = make_character()
         self.assertIn('Weapon', result)
@@ -46,6 +50,12 @@ class Test(TestCase):
         result = make_character()
         actual = result['XP']
         expected = 0
+        self.assertEqual(expected, actual)
+
+    def test_make_character_Level_value_is_1(self):
+        result = make_character()
+        actual = result['Level']
+        expected = 1
         self.assertEqual(expected, actual)
 
     def test_make_character_Weapon_value_is_Dragon_Blade(self):
