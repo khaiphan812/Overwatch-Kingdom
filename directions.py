@@ -6,20 +6,20 @@ def get_user_direction():
     :return: the direction the player wants to go
     """
     directions = {
-        "w": "North",
-        "s": "South",
-        "d": "East",
-        "a": "West"
+        'w': 'North',
+        's': 'South',
+        'd': 'East',
+        'a': 'West'
     }
-    print("Below are the possible directions:")
-    print("W - North\nS - South\nD - East\nA - West")
+    print('Below are the possible directions:')
+    print('W - North\nS - South\nD - East\nA - West')
     while True:
-        user_input = input("Which direction do you want to go? ")
+        user_input = input('Which direction do you want to go? ')
         user_choice = user_input.lower()
         if user_choice in directions:
             return directions[user_choice]
         else:
-            print("Invalid input. Please enter a valid direction.")
+            print('Invalid input. Please enter a valid direction.')
 
 
 def validate_move(board, character, direction):
@@ -41,19 +41,19 @@ def validate_move(board, character, direction):
     False
     >>> validate_move({(0, 0): 'Hanamura',      (0, 1): 'Eichenwalde',
     ...                (1, 0): 'Circuit Royal', (1, 1): 'Kings Row'},
-    ...                {"X-coordinate": 1, "Y-coordinate": 0}, "East")
+    ...                {'X-coordinate': 1, 'Y-coordinate': 0}, 'East')
     True
     """
-    x_coordinate = character["X-coordinate"]
-    y_coordinate = character["Y-coordinate"]
+    x_coordinate = character['X-coordinate']
+    y_coordinate = character['Y-coordinate']
 
-    if direction == "North" and x_coordinate > min(key[0] for key in board.keys()):
+    if direction == 'North' and x_coordinate > min(key[0] for key in board.keys()):
         return True
-    elif direction == "South" and x_coordinate < max(key[0] for key in board.keys()):
+    elif direction == 'South' and x_coordinate < max(key[0] for key in board.keys()):
         return True
-    elif direction == "East" and y_coordinate < max(key[1] for key in board.keys()):
+    elif direction == 'East' and y_coordinate < max(key[1] for key in board.keys()):
         return True
-    elif direction == "West" and y_coordinate > min(key[1] for key in board.keys()):
+    elif direction == 'West' and y_coordinate > min(key[1] for key in board.keys()):
         return True
     else:
         return False
@@ -75,12 +75,12 @@ def move_character(character, direction):
     >>> move_character({'X-coordinate': 1, 'Y-coordinate': 1}, 'East')
     {'X-coordinate': 1, 'Y-coordinate': 2}
     """
-    if direction == "North":
-        character["X-coordinate"] -= 1
-    elif direction == "South":
-        character["X-coordinate"] += 1
+    if direction == 'North':
+        character['X-coordinate'] -= 1
+    elif direction == 'South':
+        character['X-coordinate'] += 1
     elif direction == "East":
-        character["Y-coordinate"] += 1
-    elif direction == "West":
-        character["Y-coordinate"] -= 1
+        character['Y-coordinate'] += 1
+    elif direction == 'West':
+        character['Y-coordinate'] -= 1
     return character
