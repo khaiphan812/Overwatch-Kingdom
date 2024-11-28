@@ -52,7 +52,7 @@ def check_if_level_up(character):
     :postcondition: check if the character reaches the next level
     :return: the character's updated Level, HP, Weapon stats
 
-    >>> char = check_if_level_up({'HP': 5, 'XP': 400, 'Level': 1, 'Weapon': 'Magic Sword'})
+    >>> char = check_if_level_up({'HP': 5, 'XP': 400, 'Level': 1, 'Weapon': 'Dragon Blade'})
     You just reached level 2. Your HP increases by 5. Your current HP is 10.
     Your weapon has been upgraded to a Rocket Hammer.
     >>> char = check_if_level_up({'HP': 7, 'XP': 600, 'Level': 2, 'Weapon': 'Rocket Hammer'})
