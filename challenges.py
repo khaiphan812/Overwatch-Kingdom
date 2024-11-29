@@ -137,7 +137,7 @@ def skill_cast(character):
             print("Invalid input. Recast a valid skill.")
 
     enemy_choice = random.choice(options)
-    print(f'Your enemy casted {enemy_choice.title()}.')
+    print(f"Your enemy casted {enemy_choice.title()}.")
     if user_choice == enemy_choice:
         print(f"It's a tie. You survive another day. You can move on.")
     elif (user_choice == 'fortify' and enemy_choice == 'burrow') or \
@@ -147,10 +147,10 @@ def skill_cast(character):
          (user_choice == 'soundwave' and enemy_choice == 'fortify') or \
          (user_choice == 'virus' and enemy_choice == 'burrow'):
         character['XP'] = min(600, character['XP'] + 100)
-        print(f'You won the fight. You gained 100 XP (max 600 XP)! Your current XP is {character['XP']}.')
+        print(f"You won the fight. You gained 100 XP (max 600 XP)! Your current XP is {character['XP']}.")
     else:
         character['HP'] -= 1
-        print(f'You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.')
+        print(f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.")
     return character
 
 
