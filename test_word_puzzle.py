@@ -36,8 +36,8 @@ class Test(TestCase):
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
-    @patch('random.choice', side_effect=['recursion'])
-    @patch('random.sample', side_effect=['insoerucr'])
+    @patch('random.choice', side_effect=['dictionary'])
+    @patch('random.sample', side_effect=['ctiioyrand'])
     @patch('builtins.input', side_effect=['dfg%s#fdsa@42'])
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_word_puzzle_wrong_answer_with_invalid_characters(self, mock_output, _, __, ___):
@@ -47,8 +47,8 @@ class Test(TestCase):
         expected = ("Welcome to Word Puzzle challenge. "
                     "You must unscramble the given word to overcome this challenge.\n"
                     "Hint: the word is VERY python-related!\n"
-                    "Unscramble the word: insoerucr\n"
-                    "Wrong! The correct word was: recursion\n"
+                    "Unscramble the word: ctiioyrand\n"
+                    "Wrong! The correct word was: dictionary\n"
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
