@@ -212,13 +212,13 @@ def final_boss_battle(character, doom):
     :return: the character's updated stats
 
     """
-    print("You are now ready to face the final boss - Master Doom!\n"
+    print("You are now ready to face the final boss - Master Doom!\n "
           "You must defeat him to finish the game.")
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
           "Everytime you get a question right, you'll strip 2 HP off him.\n"
           "If you get it wrong, he'll strike you and take away 2 HP.\n"
           "All one-word answers, no articles (a/an/the) required.\n"
-          "To kill or to be killed. Let's begin!\n")
+          "To kill or to be killed. Let's begin!")
     riddles = {'I speak without a mouth and hear without ears. '
                'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
                'I am not alive, but I can grow; I don’t have lungs, but I need air; '
@@ -244,8 +244,8 @@ def final_boss_battle(character, doom):
         user_answer = input("Your answer: ").lower().strip()
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
-            print(f'Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n'
-                  f'You lost 2 HP. You have {character['HP']} HP left.')
+            print(f"Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n"
+                  f"You lost 2 HP. You have {character['HP']} HP left.")
         else:
             doom['HP'] = max(0, doom['HP'] - 2)
             print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
