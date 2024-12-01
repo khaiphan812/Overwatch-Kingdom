@@ -69,7 +69,7 @@ def word_puzzle(character):
     time.sleep(1)
     if guess == chosen_word:
         character['XP'] = min(600, character['XP'] + 100)
-        print(f"Correct! You gained 100 XP (max 600 XP). Your current XP is {character['XP']}.")
+        print(f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
         print(f"Wrong! The passcode was: {chosen_word}.")
@@ -110,7 +110,7 @@ def hostage_rescue(character):
     time.sleep(1)
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
-        print(f"Correct! You just rescued the victims and gained 100 XP (max 600 XP)! "
+        print(f"Correct! You just rescued the victims and gained 100 XP! "
               f"Your current XP is {character['XP']}.")
     else:
         character['HP'] -= 1
@@ -170,7 +170,7 @@ def skill_cast(character):
          (user_choice == 'soundwave' and enemy_choice == 'fortify') or \
          (user_choice == 'virus' and enemy_choice == 'burrow'):
         character['XP'] = min(600, character['XP'] + 100)
-        print(f"You won the fight. You gained 100 XP (max 600 XP)! Your current XP is {character['XP']}.")
+        print(f"You won the fight. You gained 100 XP! Your current XP is {character['XP']}.")
     else:
         character['HP'] -= 1
         print(f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.")
@@ -267,6 +267,7 @@ def final_boss_battle(character, doom):
     while character['HP'] > 0 and doom['HP'] > 0:
         riddle, answer = next(cycle)
         print(riddle)
+        time.sleep(1)
         user_answer = input("Your answer: ").lower().strip()
         time.sleep(1)
         if user_answer != answer:
@@ -284,4 +285,5 @@ def final_boss_battle(character, doom):
         print("You have fallen before Master Doom.")
     elif doom['HP'] == 0:
         print("You have defeated Master Doom!")
+    time.sleep(1)
     return character
