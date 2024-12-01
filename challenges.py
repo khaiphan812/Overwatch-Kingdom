@@ -1,5 +1,6 @@
 import random
 import itertools
+import time
 
 
 def check_for_challenge():
@@ -43,8 +44,11 @@ def word_puzzle(character):
     :return: the character's updated XP and/or HP stats
 
     """
-    print("Welcome to Word Puzzle challenge. You must unscramble the given word to overcome this challenge.\n"
-          "Hint: the word is VERY python-related!")
+    print("This location is passcode protected by Master Doom's guards.\n"
+          "You received a passcode from a spy but the letters are scrambled.\n"
+          "You must give the correct passcode to hide your identity and safely get through the gate.\n"
+          "Hint: the passcode is VERY python-related!")
+    time.sleep(1)
     words_list = ['pythonic', 'function', 'aliases',
                   'immutable', 'itertools', 'iteration',
                   'dictionary', 'tuple', 'variable',
@@ -55,15 +59,17 @@ def word_puzzle(character):
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
-    print("Unscramble the word:", scrambled_word)
-    guess = input("Your guess: ")
+    print("Unscramble this passcode:", scrambled_word)
+    guess = input("Your passcode: ")
     if guess == chosen_word:
         character['XP'] = min(600, character['XP'] + 100)
         print(f"Correct! You gained 100 XP (max 600 XP). Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
-        print(f"Wrong! The correct word was: {chosen_word}\n"
-              f"You just lost 1 HP. Your current HP is {character['HP']}.")
+        print(f"Wrong! The passcode was: {chosen_word}.\n"
+              f"The guards exposed your undercover and attacked you.\n"
+              f"You lost 1 HP. Your current HP is {character['HP']}.")
+    time.sleep(1)
     return character
 
 
@@ -77,10 +83,10 @@ def hostage_rescue(character):
     :return: the character's updated XP and/or HP stats
 
     """
-    print("Master Doom's minions are holding a number of citizens as hostage.\n"
+    print("Master Doom's guards are holding a number of citizens as hostage.\n"
           "Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.\n"
           "Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!")
-
+    time.sleep(1)
     hostage_roll = random.randint(1, 5)
     options = ['1', '2', '3', '4', '5']
     user_guess = ""
@@ -91,6 +97,7 @@ def hostage_rescue(character):
             print("You must enter a positive integer!")
         if user_guess not in options:
             print("Invalid input. Please enter an integer between 1 and 5.")
+    time.sleep(1)
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
         print(f"Correct! You just rescued the victims and gained 100 XP (max 600 XP)! "
@@ -99,6 +106,7 @@ def hostage_rescue(character):
         character['HP'] -= 1
         print(f"Wrong! The correct number of hostage is {hostage_roll}. "
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
+    time.sleep(1)
     return character
 
 
@@ -112,7 +120,7 @@ def skill_cast(character):
     :return: the character's updated XP and/or HP stats
 
     """
-    print("You have a skill battle against Sigma - Master Doom's sidekick.\n"
+    print("Here comes a skill battle against Sigma - Master Doom's sidekick.\n"
           "You and Sigma will each cast a skill.\n"
           "Whoever casts a more powerful skill wins the battle.\n"
           "Here are the skills you can cast:\n"
@@ -128,16 +136,18 @@ def skill_cast(character):
           "Soundwave beats Fortify.\n"
           "Virus beats Burrow.\n"
           "If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
+    time.sleep(1)
     options = ['fortify', 'burrow', 'soundwave', 'virus']
     user_choice = ""
     while user_choice not in options:
-        user_input = input("It's time to cast your skill (lowercase acceptable): ")
+        user_input = input("Pick a skill and cast it: ")
         user_choice = user_input.lower().strip()
         if user_choice not in options:
             print("Invalid input. Recast a valid skill.")
-
+    time.sleep(1)
     enemy_choice = random.choice(options)
     print(f"Your enemy casted {enemy_choice.title()}.")
+    time.sleep(1)
     if user_choice == enemy_choice:
         print(f"It's a tie. You survive another day. You can move on.")
     elif (user_choice == 'fortify' and enemy_choice == 'burrow') or \
@@ -151,6 +161,7 @@ def skill_cast(character):
     else:
         character['HP'] -= 1
         print(f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.")
+    time.sleep(1)
     return character
 
 
@@ -214,11 +225,13 @@ def final_boss_battle(character, doom):
     """
     print("You are now ready to face the final boss - Master Doom!\n "
           "You must defeat him to finish the game.")
+    time.sleep(1)
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
           "Everytime you get a question right, you'll strip 2 HP off him.\n"
           "If you get it wrong, he'll strike you and take away 2 HP.\n"
           "All one-word answers, no articles (a/an/the) required.\n"
           "To kill or to be killed. Let's begin!")
+    time.sleep(1)
     riddles = {'I speak without a mouth and hear without ears. '
                'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
                'I am not alive, but I can grow; I don’t have lungs, but I need air; '
@@ -242,6 +255,7 @@ def final_boss_battle(character, doom):
         riddle, answer = next(cycle)
         print(riddle)
         user_answer = input("Your answer: ").lower().strip()
+        time.sleep(1)
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
             print(f"Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n"
@@ -250,8 +264,10 @@ def final_boss_battle(character, doom):
             doom['HP'] = max(0, doom['HP'] - 2)
             print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
                   f"He lost 2 HP and has {doom['HP']} HP left.")
+        time.sleep(1)
     if character['HP'] == 0:
         print("You have fallen before Master Doom.")
     elif doom['HP'] == 0:
         print("You have defeated Master Doom!")
+    time.sleep(1)
     return character
