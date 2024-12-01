@@ -26,7 +26,7 @@ def make_board(rows, columns):
         for column in range(columns):
             board[(row, column)] = random.choice(locations)
 
-    print("This is the map of the Overwatch Kingdom:")
+    print("This is Overwatch Kingdom map:")
     for row in range(rows):
         for column in range(columns):
             print(f"({row}, {column}): {board[(row, column)]:<20}", end=" ")
@@ -56,8 +56,8 @@ def describe_current_location(board, character):
     You have arrived at Kings Row.
 
     """
-    x_coordinate = character["X-coordinate"]
-    y_coordinate = character["Y-coordinate"]
+    x_coordinate = character['X-coordinate']
+    y_coordinate = character['Y-coordinate']
     description = board[(x_coordinate, y_coordinate)]
     print(f"You have arrived at {description}.")
     return

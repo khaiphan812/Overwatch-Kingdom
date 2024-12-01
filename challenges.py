@@ -63,7 +63,7 @@ def word_puzzle(character):
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
-    print("Here is scrambled passcode: ", scrambled_word)
+    print("Here is scrambled passcode:", scrambled_word)
     time.sleep(1)
     guess = input("Enter the correct passcode: ")
     time.sleep(1)
@@ -236,7 +236,7 @@ def final_boss_battle(character, doom):
 
     """
     time.sleep(1)
-    print("You are now ready to face the final boss - Master Doom!\n "
+    print("You are now ready to face the final boss - Master Doom!\n"
           "You must defeat him to complete your journey.")
     time.sleep(1)
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"

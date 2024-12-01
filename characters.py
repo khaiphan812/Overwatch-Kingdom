@@ -70,6 +70,7 @@ def check_if_level_up(character):
         print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.")
         time.sleep(1)
         print(f"Your weapon has been upgraded to a {character['Weapon']}.")
+        time.sleep(1)
 
     if character['XP'] == 600 and character['Level'] == 2:
         character['Level'] = 3
@@ -78,4 +79,5 @@ def check_if_level_up(character):
         print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.")
         time.sleep(1)
         print(f"Your weapon has been upgraded to a {character['Weapon']}.")
+        time.sleep(1)
     return character
