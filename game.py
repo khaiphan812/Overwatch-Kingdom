@@ -22,8 +22,8 @@ def game():
     """
     Drive the game.
     """
-    rows = 10
-    columns = 10
+    rows = 8
+    columns = 8
     board = make_board(rows, columns)
     character = make_character()
     doom = make_final_boss()
