@@ -1,3 +1,6 @@
+import time
+
+
 def make_character():
     """
     Create a dictionary containing "X-coordinate": 0, "Y-coordinate": 0, and "Current HP": 5.
@@ -59,17 +62,20 @@ def check_if_level_up(character):
     You just reached level 3. Your HP increases by 5. Your current HP is 12.
     Your weapon has been upgraded to a Biotic Rifle.
     """
+    time.sleep(1)
     if character['XP'] >= 300 and character['Level'] == 1:
         character['Level'] = 2
         character['HP'] += 5
         character['Weapon'] = 'Rocket Hammer'
-        print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.\n"
-              f"Your weapon has been upgraded to a {character['Weapon']}.")
+        print(f"You just reached level 2. Your HP increases by 5. Your current HP is {character['HP']}.")
+        time.sleep(1)
+        print(f"Your weapon has been upgraded to a {character['Weapon']}.")
 
     if character['XP'] == 600 and character['Level'] == 2:
         character['Level'] = 3
         character['HP'] += 5
         character['Weapon'] = 'Biotic Rifle'
-        print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.\n"
-              f"Your weapon has been upgraded to a {character['Weapon']}.")
+        print(f"You just reached level 3. Your HP increases by 5. Your current HP is {character['HP']}.")
+        time.sleep(1)
+        print(f"Your weapon has been upgraded to a {character['Weapon']}.")
     return character
