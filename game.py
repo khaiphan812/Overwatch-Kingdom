@@ -65,10 +65,12 @@ def game():
                     mission_complete = True
         else:
             print("Sorry you can't go in that direction.")
+        time.sleep(1)
     if not is_alive(character):
         print("Sorry, you died. Mission Failed.")
     else:
         print("Congratulations! Peace has finally returned to Overwatch Kingdom!")
+        time.sleep(1)
         print("""
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
