@@ -53,7 +53,6 @@ def game():
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
-            time.sleep(1)
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
                 challenge_picker(character)
