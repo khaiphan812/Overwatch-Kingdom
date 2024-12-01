@@ -2,6 +2,7 @@
 Khai Phan
 Overwatch Kingdom
 """
+import time
 from board import make_board
 from board import describe_current_location
 from characters import make_character
@@ -26,25 +27,33 @@ def game():
     board = make_board(rows, columns)
     character = make_character()
     doom = make_final_boss()
-    print("Objective:\n"
-          "Navigate through the Overwatch Kingdom, overcome challenges on the way to level up.\n"
-          "Upon reaching level 3 and arrive at the bottom right of the map,"
-          "you will face Master Doom - the final boss.\n"
+    time.sleep(1)
+    print("Story:\n"
+          "Overwatch Kingdom was once a peaceful land with bliss and joy.\n"
+          "Then Master Doom came and disrupted the harmony of the kingdom.\n"
+          "You are Reinhardt Wilhelm, a watchful guardian who vowed to protect the kingdom at all costs.")
+    time.sleep(1)
+    print("Mission:\n"
+          "Navigate through the map and overcome challenges on the way.\n"
+          "Every time you win a challenge, you'll gain 100 XP for levelling up.\n"
+          "You need to obtain 300 and 600 XP to reach level 2 and 3 respectively.\n"
+          "You are now at Level 1 with 0 XP, 5 HP, and holding a Dragon Blade as your weapon.\n"
+          "Each time you level up, your HP limit and weapon will be upgraded.\n"
+          "When reaching level 3 AND arrive at the bottom right location,"
+          "you will face Master Doom,the final boss, in a super challenging battle.\n"
           "You must kill him before he kills you. Defeat him to complete the mission.\n"
-          f"You are currently at Level {character['Level']}.\n"
-          f"Every time you level up, your HP and weapon will be upgraded.\n"
-          f"Your current HP is {character['HP']} and you're holding a {character['Weapon']} as your weapon.\n"
-          f"Every time you overcome a challenge, you'll gain 100 XP.\n"
-          f"You need 300 XP to level up.\n"
-          f"Let's begin your mission. The citizens are relying on you!")
+          "Let your journey begin. The citizens are relying on you. Good luck!")
+    time.sleep(1)
     mission_complete = False
     while is_alive(character) and not mission_complete:
         describe_current_location(board, character)
+        time.sleep(1)
         direction = get_user_direction()
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
+            time.sleep(1)
             there_is_a_challenger = check_for_challenge()
             if there_is_a_challenger:
                 challenge_picker(character)
