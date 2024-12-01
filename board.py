@@ -18,10 +18,15 @@ def make_board(rows, columns):
      (1, 0): 'Kings Row', (1, 1): 'Hanamura'}
     """
     board = {}
-    locations = ['Dorado', 'Temple of Anubis', 'Circuit Royal', 'Junkertown',
+    locations = ['Dorado', 'Throne of Anubis', 'Circuit Royal', 'Junkertown',
                  'Lunar Colony', 'Eichenwalde', 'Numbani', 'Hanamura',
                  'Château Guillard', 'Havana', 'Ilios Ruins', 'Black Forest',
-                 'Necropolis', 'Kings Row', 'Rialto', 'Lijiang Tower']
+                 'Necropolis', 'Kings Row', 'Overland Harbour', 'Lijiang Tower',
+                 'New Junk City', 'Suravasa', 'Paraíso', 'New Queen Street',
+                 'Lunar Colony', 'Volskaya', 'Paradise Resort', 'Oasis Sanctuary',
+                 'Iris Village', 'San Joaquin', 'Kyoto Temple', 'Galapagos',
+                 'Ecopoint: Antarctica', 'Talantis', 'Rialto', 'Ayutthaya',
+                 'Runasapi', 'Malevento', 'Watchpoint: Petra', 'Castillo']
     for row in range(rows):
         for column in range(columns):
             board[(row, column)] = random.choice(locations)
