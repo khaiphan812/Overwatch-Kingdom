@@ -117,3 +117,21 @@ class Test(TestCase):
                     "Your enemy casted Soundwave.\n"
                     "You won the fight. You gained 100 XP (max 600 XP)! Your current XP is 200.\n")
         self.assertEqual(expected, actual)
+
+    @patch('random.choice', side_effect=['soundwave'])
+    @patch('builtins.input', side_effect=['fortify'])
+    def test_skill_cast_loss_updated_HP(self, _, __):
+        char = {'HP': 5, 'XP': 100}
+        skill_cast(char)
+        actual = char['HP']
+        expected = 4
+        self.assertEqual(expected, actual)
+
+    @patch('random.choice', side_effect=['soundwave'])
+    @patch('builtins.input', side_effect=['burrow'])
+    def test_skill_cast_win_updated_XP(self, _, __):
+        char = {'HP': 5, 'XP': 100}
+        skill_cast(char)
+        actual = char['XP']
+        expected = 200
+        self.assertEqual(expected, actual)
