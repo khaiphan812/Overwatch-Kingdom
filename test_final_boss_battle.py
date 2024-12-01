@@ -56,9 +56,9 @@ class Test(TestCase):
         expected = 0
         self.assertEqual(expected, actual)
 
-    @patch('builtins.input', side_effect=['easd', 'akde', 'fgss', 'sdgfe', 'arhe', 'fnvbvn', 'rtryr', 'savbb'])
+    @patch('builtins.input', side_effect=['easd', 'akde', 'fgss', 'sdgfe'])
     def test_final_boss_battle_character_dies(self, _):
-        char = {'HP': 15, 'XP': 600, 'Level': 3, 'Weapon': 'Biotic Rifle'}
+        char = {'HP': 8, 'XP': 600, 'Level': 3, 'Weapon': 'Biotic Rifle'}
         boss = {'HP': 10, 'Weapon': 'Destructive Flail'}
         final_boss_battle(char, boss)
         actual = char['HP']
