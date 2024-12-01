@@ -44,10 +44,14 @@ def word_puzzle(character):
     :return: the character's updated XP and/or HP stats
 
     """
-    print("This location is passcode protected by Master Doom's guards.\n"
-          "You received a passcode from a spy but the letters are scrambled.\n"
-          "You must give the correct passcode to hide your identity and safely get through the gate.\n"
-          "Hint: the passcode is VERY python-related!")
+    time.sleep(1)
+    print("This location is passcode protected by Master Doom's guards.")
+    time.sleep(1)
+    print("You received a passcode from a spy but the letters are scrambled.")
+    time.sleep(1)
+    print("You must give the correct passcode to hide your identity and safely get through the gate.")
+    time.sleep(1)
+    print("Hint: the passcode is VERY python-related!")
     time.sleep(1)
     words_list = ['pythonic', 'function', 'aliases',
                   'immutable', 'itertools', 'iteration',
@@ -59,17 +63,17 @@ def word_puzzle(character):
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
-    print("Unscramble this passcode:", scrambled_word)
-    guess = input("Your passcode: ")
+    print("Here is scrambled passcode: ", scrambled_word)
+    guess = input("Enter the correct passcode: ")
+    time.sleep(1)
     if guess == chosen_word:
         character['XP'] = min(600, character['XP'] + 100)
         print(f"Correct! You gained 100 XP (max 600 XP). Your current XP is {character['XP']}.")
     else:
         character["HP"] -= 1
-        print(f"Wrong! The passcode was: {chosen_word}.\n"
-              f"The guards exposed your undercover and attacked you.\n"
-              f"You lost 1 HP. Your current HP is {character['HP']}.")
-    time.sleep(1)
+        print(f"Wrong! The passcode was: {chosen_word}.")
+        print(f"The guards exposed your undercover and attacked you.")
+        print(f"You lost 1 HP. Your current HP is {character['HP']}.")
     return character
 
 
@@ -83,9 +87,12 @@ def hostage_rescue(character):
     :return: the character's updated XP and/or HP stats
 
     """
-    print("Master Doom's guards are holding a number of citizens as hostage.\n"
-          "Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.\n"
-          "Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!")
+    time.sleep(1)
+    print("Master Doom's guards are holding a number of citizens as hostage.")
+    time.sleep(1)
+    print("Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.")
+    time.sleep(1)
+    print("Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!")
     time.sleep(1)
     hostage_roll = random.randint(1, 5)
     options = ['1', '2', '3', '4', '5']
@@ -106,7 +113,6 @@ def hostage_rescue(character):
         character['HP'] -= 1
         print(f"Wrong! The correct number of hostage is {hostage_roll}. "
               f"You just lost 1 HP. Your current HP is {character['HP']}.")
-    time.sleep(1)
     return character
 
 
@@ -120,22 +126,23 @@ def skill_cast(character):
     :return: the character's updated XP and/or HP stats
 
     """
+    time.sleep(1)
     print("Here comes a skill battle against Sigma - Master Doom's sidekick.\n"
           "You and Sigma will each cast a skill.\n"
-          "Whoever casts a more powerful skill wins the battle.\n"
-          "Here are the skills you can cast:\n"
+          "Whoever casts a more powerful skill wins the battle.")
+    print("Here are the skills you can cast:\n"
           "Fortify: Gain temporary health, reducing all damage taken.\n"
           "Burrow: Move underground and then emerge to deal damage.\n"
           "Soundwave: Create a blast wave to knock enemies away from you.\n"
-          "Virus: Infect enemies with a projectile that deals damage over time.\n"
-          "Here are the rules:\n"
+          "Virus: Infect enemies with a projectile that deals damage over time.")
+    print("And here are the rules:\n"
           "Fortify beats Burrow.\n"
           "Burrow beats Soundwave.\n"
           "Soundwave beats Virus.\n"
           "Virus beats Fortify.\n"
           "Soundwave beats Fortify.\n"
-          "Virus beats Burrow.\n"
-          "If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
+          "Virus beats Burrow.")
+    print("If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
     time.sleep(1)
     options = ['fortify', 'burrow', 'soundwave', 'virus']
     user_choice = ""
@@ -161,7 +168,6 @@ def skill_cast(character):
     else:
         character['HP'] -= 1
         print(f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.")
-    time.sleep(1)
     return character
 
 
@@ -223,8 +229,9 @@ def final_boss_battle(character, doom):
     :return: the character's updated stats
 
     """
+    time.sleep(1)
     print("You are now ready to face the final boss - Master Doom!\n "
-          "You must defeat him to finish the game.")
+          "You must defeat him to complete your journey.")
     time.sleep(1)
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
           "Everytime you get a question right, you'll strip 2 HP off him.\n"
@@ -232,23 +239,23 @@ def final_boss_battle(character, doom):
           "All one-word answers, no articles (a/an/the) required.\n"
           "To kill or to be killed. Let's begin!")
     time.sleep(1)
-    riddles = {'I speak without a mouth and hear without ears. '
+    riddles = {'Riddle: I speak without a mouth and hear without ears. '
                'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
-               'I am not alive, but I can grow; I don’t have lungs, but I need air; '
+               'Riddle: I am not alive, but I can grow; I don’t have lungs, but I need air; '
                'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
-               'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
-               'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
-               'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
+               'Riddle: The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
+               'Riddle: What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+               'Riddle: What has a heart that doesn’t beat, a mouth that doesn’t speak, '
                'and a head that doesn’t think? (9 letters)': 'artichoke',
-               'I’m always in front of you but can never be seen. What am I? (6 letters)': 'future',
-               'The more you take out of me, the bigger I get. What am I? (4 letters)': 'hole',
-               'I have many teeth but cannot bite. What am I? (4 letters)': 'comb',
-               'What has no beginning, end, or middle? (6 letters)': 'circle',
-               'I can be cracked, made, told, and played. What am I? (4 letters)': 'joke',
-               'What is harder to catch the faster you run? (6 letters)': 'breath',
-               'The maker doesn’t want it. The buyer doesn’t use it. '
+               'Riddle: I’m always in front of you but can never be seen. What am I? (6 letters)': 'future',
+               'Riddle: The more you take out of me, the bigger I get. What am I? (4 letters)': 'hole',
+               'Riddle: I have many teeth but cannot bite. What am I? (4 letters)': 'comb',
+               'Riddle: What has no beginning, end, or middle? (6 letters)': 'circle',
+               'Riddle: I can be cracked, made, told, and played. What am I? (4 letters)': 'joke',
+               'Riddle: What is harder to catch the faster you run? (6 letters)': 'breath',
+               'Riddle: The maker doesn’t want it. The buyer doesn’t use it. '
                'The user doesn’t know it. What am I? (6 letters)': 'coffin',
-               'The more you have of me, the less you see. What am I? (8 letters)': 'darkness'
+               'Riddle: The more you have of me, the less you see. What am I? (8 letters)': 'darkness'
                }
     cycle = itertools.cycle(riddles.items())
     while character['HP'] > 0 and doom['HP'] > 0:
@@ -269,5 +276,4 @@ def final_boss_battle(character, doom):
         print("You have fallen before Master Doom.")
     elif doom['HP'] == 0:
         print("You have defeated Master Doom!")
-    time.sleep(1)
     return character
