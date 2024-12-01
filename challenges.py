@@ -64,6 +64,7 @@ def word_puzzle(character):
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
     print("Here is scrambled passcode: ", scrambled_word)
+    time.sleep(1)
     guess = input("Enter the correct passcode: ")
     time.sleep(1)
     if guess == chosen_word:
@@ -72,7 +73,9 @@ def word_puzzle(character):
     else:
         character["HP"] -= 1
         print(f"Wrong! The passcode was: {chosen_word}.")
+        time.sleep(1)
         print(f"The guards exposed your undercover and attacked you.")
+        time.sleep(1)
         print(f"You lost 1 HP. Your current HP is {character['HP']}.")
     return character
 
@@ -130,11 +133,13 @@ def skill_cast(character):
     print("Here comes a skill battle against Sigma - Master Doom's sidekick.\n"
           "You and Sigma will each cast a skill.\n"
           "Whoever casts a more powerful skill wins the battle.")
+    time.sleep(1)
     print("Here are the skills you can cast:\n"
           "Fortify: Gain temporary health, reducing all damage taken.\n"
           "Burrow: Move underground and then emerge to deal damage.\n"
           "Soundwave: Create a blast wave to knock enemies away from you.\n"
           "Virus: Infect enemies with a projectile that deals damage over time.")
+    time.sleep(1)
     print("And here are the rules:\n"
           "Fortify beats Burrow.\n"
           "Burrow beats Soundwave.\n"
@@ -142,6 +147,7 @@ def skill_cast(character):
           "Virus beats Fortify.\n"
           "Soundwave beats Fortify.\n"
           "Virus beats Burrow.")
+    time.sleep(1)
     print("If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
     time.sleep(1)
     options = ['fortify', 'burrow', 'soundwave', 'virus']
@@ -265,12 +271,14 @@ def final_boss_battle(character, doom):
         time.sleep(1)
         if user_answer != answer:
             character['HP'] = max(0, character['HP'] - 2)
-            print(f"Wrong answer! Master Doom just struck you with his {doom['Weapon']}.\n"
-                  f"You lost 2 HP. You have {character['HP']} HP left.")
+            print(f"Wrong answer! Master Doom just struck you with his {doom['Weapon']}.")
+            time.sleep(1)
+            print(f"You lost 2 HP. You have {character['HP']} HP left.")
         else:
             doom['HP'] = max(0, doom['HP'] - 2)
-            print(f"Correct! You just shot Master Doom with your {character['Weapon']}.\n"
-                  f"He lost 2 HP and has {doom['HP']} HP left.")
+            print(f"Correct! You just shot Master Doom with your {character['Weapon']}.")
+            time.sleep(1)
+            print(f"He lost 2 HP and has {doom['HP']} HP left.")
         time.sleep(1)
     if character['HP'] == 0:
         print("You have fallen before Master Doom.")
