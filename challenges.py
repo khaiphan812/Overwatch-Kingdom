@@ -110,7 +110,7 @@ def hostage_rescue(character):
     time.sleep(1)
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
-        print(f"Correct! You just rescued the victims and gained 100 XP! "
+        print(f"Correct! You successfully rescued the victims and gained 100 XP! "
               f"Your current XP is {character['XP']}.")
     else:
         character['HP'] -= 1
