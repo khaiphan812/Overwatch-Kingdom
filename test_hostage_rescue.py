@@ -71,3 +71,21 @@ class Test(TestCase):
                     "Wrong! The correct number of hostage is 2. "
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
+
+    @patch('builtins.input', side_effect=['3'])
+    @patch('random.randint', return_value=2)
+    def test_hostage_rescue_wrong_guess_update_HP(self, _, __):
+        char = {'HP': 5, 'XP': 100}
+        hostage_rescue(char)
+        actual = char['HP']
+        expected = 4
+        self.assertEqual(expected, actual)
+
+    @patch('builtins.input', side_effect=['3'])
+    @patch('random.randint', return_value=3)
+    def test_hostage_rescue_correct_guess_update_XP(self, _, __):
+        char = {'HP': 5, 'XP': 100}
+        hostage_rescue(char)
+        actual = char['XP']
+        expected = 200
+        self.assertEqual(expected, actual)
