@@ -52,3 +52,22 @@ class Test(TestCase):
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
+    @patch('random.choice', side_effect=['tuple'])
+    @patch('random.sample', side_effect=['euplt'])
+    @patch('builtins.input', side_effect=['tupel'])
+    def test_word_puzzle_loss_updated_HP(self, _, __, ___):
+        char = {'HP': 5, 'XP': 100}
+        word_puzzle(char)
+        actual = char['HP']
+        expected = 4
+        self.assertEqual(expected, actual)
+
+    @patch('random.choice', side_effect=['tuple'])
+    @patch('random.sample', side_effect=['euplt'])
+    @patch('builtins.input', side_effect=['tuple'])
+    def test_word_puzzle_win_updated_XP(self, _, __, ___):
+        char = {'HP': 5, 'XP': 100}
+        word_puzzle(char)
+        actual = char['XP']
+        expected = 200
+        self.assertEqual(expected, actual)
