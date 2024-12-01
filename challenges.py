@@ -74,7 +74,7 @@ def word_puzzle(character):
         character["HP"] -= 1
         print(f"Wrong! The passcode was: {chosen_word}.")
         time.sleep(1)
-        print(f"The guards exposed your undercover and attacked you.")
+        print(f"Your undercover is exposed and the guards hit you.")
         time.sleep(1)
         print(f"You lost 1 HP. Your current HP is {character['HP']}.")
     return character
@@ -91,7 +91,7 @@ def hostage_rescue(character):
 
     """
     time.sleep(1)
-    print("Master Doom's guards are holding a number of citizens as hostage.")
+    print("Master Doom's guards are holding a number of innocent people hostage.")
     time.sleep(1)
     print("Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.")
     time.sleep(1)
@@ -242,7 +242,7 @@ def final_boss_battle(character, doom):
     print("Master Doom is a riddle master. He fights using a series of conundrums.\n"
           "Everytime you get a question right, you'll strip 2 HP off him.\n"
           "If you get it wrong, he'll strike you and take away 2 HP.\n"
-          "All one-word answers, no articles (a/an/the) required.\n"
+          "Only one-word answers, no articles (a/an/the) required.\n"
           "To kill or to be killed. Let's begin!")
     time.sleep(1)
     riddles = {'Riddle: I speak without a mouth and hear without ears. '
