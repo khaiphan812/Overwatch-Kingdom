@@ -10,13 +10,13 @@ class Test(TestCase):
     def test_final_boss_battle_correct_answer_print_output(self, mock_output, _):
         char = {'HP': 12, 'XP': 600, 'Level': 3, 'Weapon': 'Biotic Rifle'}
         boss = {'HP': 10, 'Weapon': 'Destructive Flail'}
-        riddles = {'I speak without a mouth and hear without ears. '
+        riddles = {'Riddle: I speak without a mouth and hear without ears. '
                    'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
-                   'I am not alive, but I can grow; I don’t have lungs, but I need air; '
+                   'Riddle: I am not alive, but I can grow; I don’t have lungs, but I need air; '
                    'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
-                   'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
-                   'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
-                   'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
+                   'Riddle: The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
+                   'Riddle: What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+                   'Riddle: What has a heart that doesn’t beat, a mouth that doesn’t speak, '
                    'and a head that doesn’t think? (9 letters)': 'artichoke'}
 
         with patch('itertools.cycle', return_value=iter(riddles.items())):
@@ -31,13 +31,13 @@ class Test(TestCase):
     def test_final_boss_battle_wrong_answer_print_output(self, mock_output, _):
         char = {'HP': 11, 'XP': 600, 'Level': 3, 'Weapon': 'Biotic Rifle'}
         boss = {'HP': 8, 'Weapon': 'Destructive Flail'}
-        riddles = {'I speak without a mouth and hear without ears. '
+        riddles = {'Riddle: I speak without a mouth and hear without ears. '
                    'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
-                   'I am not alive, but I can grow; I don’t have lungs, but I need air; '
+                   'Riddle: I am not alive, but I can grow; I don’t have lungs, but I need air; '
                    'I don’t have a mouth, and yet I drown. What am I? (4 letters)': 'fire',
-                   'The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
-                   'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
-                   'What has a heart that doesn’t beat, a mouth that doesn’t speak, '
+                   'Riddle: The more you take, the more you leave behind. What am I? (9 letters)': 'footsteps',
+                   'Riddle: What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+                   'Riddle: What has a heart that doesn’t beat, a mouth that doesn’t speak, '
                    'and a head that doesn’t think? (9 letters)': 'artichoke'}
 
         with patch('itertools.cycle', return_value=iter(riddles.items())):
