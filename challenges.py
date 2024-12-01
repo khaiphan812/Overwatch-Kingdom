@@ -148,7 +148,7 @@ def skill_cast(character):
           "Soundwave beats Fortify.\n"
           "Virus beats Burrow.")
     time.sleep(1)
-    print("If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If you tie, no gain or loss.")
+    print("If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If it's a tie, no gain or loss.")
     time.sleep(1)
     options = ['fortify', 'burrow', 'soundwave', 'virus']
     user_choice = ""
