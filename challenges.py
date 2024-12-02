@@ -140,7 +140,7 @@ def skill_cast(character):
           Fore.RESET + "You and Sigma will each cast a skill.\n"
           "Whoever casts a more powerful skill wins the battle.")
     time.sleep(1)
-    print("Here are the skills you can cast:\n" +
+    print(Fore.YELLOW + "Here are the skills you can cast:\n" +
           Fore.CYAN + "Fortify: " + Fore.RESET + "Gain temporary health, reducing all damage taken.\n" +
           Fore.MAGENTA + "Burrow: " + Fore.RESET + "Move underground and then emerge to deal damage.\n" +
           Fore.GREEN + "Soundwave: " + Fore.RESET + "Create a blast wave to knock enemies away from you.\n" +
