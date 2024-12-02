@@ -12,7 +12,7 @@ def check_for_challenge():
     :return: True if the randomized result is equal to 1, else False
 
     """
-    return random.randint(1, 2) == 1
+    return random.randint(1, 3) == 1 or random.randint(1, 3) == 2
 
 
 def challenge_picker(character):
@@ -55,14 +55,14 @@ def word_puzzle(character):
     time.sleep(1)
     print("Hint: the passcode is VERY python-related!")
     time.sleep(1)
-    words_list = ['pythonic', 'function', 'aliases',
+    words_list = ['reference', 'function', 'aliases',
                   'immutable', 'itertools', 'iteration',
                   'dictionary', 'tuple', 'variable',
                   'decorator', 'package', 'exception',
                   'module', 'argument', 'parameter',
-                  'recursion', 'closure', 'readability',
-                  'reusability', 'compiler', 'debugger',
-                  'decomposition', 'abstraction', 'algorithm',]
+                  'recursion', 'intern', 'object',
+                  'lambda', 'memory', 'debugger',
+                  'flowchart', 'abstract', 'algorithm',]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
