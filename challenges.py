@@ -45,7 +45,7 @@ def word_puzzle(character):
 
     """
     time.sleep(1)
-    print("This location is passcode protected by Master Doom's guards.")
+    print("This location is passcode-protected by Master Doom's guards.")
     time.sleep(1)
     print("You received a passcode from a spy but the letters are scrambled.")
     time.sleep(1)
@@ -59,7 +59,8 @@ def word_puzzle(character):
                   'decorator', 'package', 'exception',
                   'module', 'argument', 'parameter',
                   'recursion', 'closure', 'readability',
-                  'reusability', 'compiler', 'debugger']
+                  'reusability', 'compiler', 'debugger',
+                  'decomposition', 'abstraction', 'algorithm',]
     chosen_word = random.choice(words_list)
     scrambled_list = random.sample(chosen_word, len(chosen_word))
     scrambled_word = "".join(scrambled_list)
@@ -74,7 +75,7 @@ def word_puzzle(character):
         character["HP"] -= 1
         print(f"Wrong! The passcode was: {chosen_word}.")
         time.sleep(1)
-        print(f"Your undercover is exposed and the guards hit you.")
+        print(f"Your undercover is exposed and the guards attack you.")
         time.sleep(1)
         print(f"You lost 1 HP. Your current HP is {character['HP']}.")
     return character

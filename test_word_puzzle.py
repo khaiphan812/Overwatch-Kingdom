@@ -13,11 +13,12 @@ class Test(TestCase):
         char = {'HP': 5, 'XP': 100}
         word_puzzle(char)
         actual = mock_output.getvalue()
-        expected = ("Welcome to Word Puzzle challenge. "
-                    "You must unscramble the given word to overcome this challenge.\n"
-                    "Hint: the word is VERY python-related!\n"
-                    "Unscramble the word: euplt\n"
-                    "Correct! You gained 100 XP (max 600 XP). Your current XP is 200.\n")
+        expected = ("This location is passcode-protected by Master Doom's guards.\n"
+                    "You received a passcode from a spy but the letters are scrambled.\n"
+                    "You must give the correct passcode to hide your identity and safely get through the gate.\n"
+                    "Hint: the passcode is VERY python-related!\n"
+                    "Here is scrambled passcode: euplt\n"
+                    "Correct! You gained 100 XP. Your current XP is 200.\n")
         self.assertEqual(expected, actual)
 
     @patch('random.choice', side_effect=['recursion'])
@@ -28,12 +29,14 @@ class Test(TestCase):
         char = {'HP': 5, 'XP': 100}
         word_puzzle(char)
         actual = mock_output.getvalue()
-        expected = ("Welcome to Word Puzzle challenge. "
-                    "You must unscramble the given word to overcome this challenge.\n"
-                    "Hint: the word is VERY python-related!\n"
-                    "Unscramble the word: insoerucr\n"
-                    "Wrong! The correct word was: recursion\n"
-                    "You just lost 1 HP. Your current HP is 4.\n")
+        expected = ("This location is passcode-protected by Master Doom's guards.\n"
+                    "You received a passcode from a spy but the letters are scrambled.\n"
+                    "You must give the correct passcode to hide your identity and safely get through the gate.\n"
+                    "Hint: the passcode is VERY python-related!\n"
+                    "Here is scrambled passcode: insoerucr\n"
+                    "Wrong! The passcode was: recursion.\n"
+                    "Your undercover is exposed and the guards attack you.\n"
+                    "You lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
     @patch('random.choice', side_effect=['dictionary'])
@@ -44,12 +47,14 @@ class Test(TestCase):
         char = {'HP': 5, 'XP': 100}
         word_puzzle(char)
         actual = mock_output.getvalue()
-        expected = ("Welcome to Word Puzzle challenge. "
-                    "You must unscramble the given word to overcome this challenge.\n"
-                    "Hint: the word is VERY python-related!\n"
-                    "Unscramble the word: ctiioyrand\n"
-                    "Wrong! The correct word was: dictionary\n"
-                    "You just lost 1 HP. Your current HP is 4.\n")
+        expected = ("This location is passcode-protected by Master Doom's guards.\n"
+                    "You received a passcode from a spy but the letters are scrambled.\n"
+                    "You must give the correct passcode to hide your identity and safely get through the gate.\n"
+                    "Hint: the passcode is VERY python-related!\n"
+                    "Here is scrambled passcode: ctiioyrand\n"
+                    "Wrong! The passcode was: dictionary.\n"
+                    "Your undercover is exposed and the guards attack you.\n"
+                    "You lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
     @patch('random.choice', side_effect=['tuple'])
