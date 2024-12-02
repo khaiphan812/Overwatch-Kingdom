@@ -15,7 +15,7 @@ def check_for_challenge():
     return random.randint(1, 3) == 1 or random.randint(1, 3) == 2
 
 
-def challenge_picker(character):
+def challenge_picker(character: dict) -> dict:
     """
     Determine the challenge the player is going to face.
 
@@ -35,7 +35,7 @@ def challenge_picker(character):
     return character
 
 
-def word_puzzle(character):
+def word_puzzle(character: dict) -> dict:
     """
     Ask the player to re-arrange a scrambled word back to the correct order.
 
@@ -83,7 +83,7 @@ def word_puzzle(character):
     return character
 
 
-def hostage_rescue(character):
+def hostage_rescue(character: dict) -> dict:
     """
     Ask the player to guess the correct number of victims held hostage by the enemy.
 
@@ -124,7 +124,7 @@ def hostage_rescue(character):
     return character
 
 
-def skill_cast(character):
+def skill_cast(character: dict) -> dict:
     """
     Ask the player to select a skill to fight against the enemy.
 
@@ -183,7 +183,7 @@ def skill_cast(character):
     return character
 
 
-def check_if_final_boss(board, character):
+def check_if_final_boss(board: dict, character: dict) -> bool:
     """
     Check if the character is ready to face the final boss.
 
@@ -229,7 +229,7 @@ def check_if_final_boss(board, character):
         return False
 
 
-def final_boss_battle(character, doom):
+def final_boss_battle(character: dict, doom: dict) -> dict:
     """
     Ask the player to answer a sequence of riddles from the final boss.
 
@@ -260,9 +260,11 @@ def final_boss_battle(character, doom):
                                                         'What am I? (4 letters)': 'fire',
                Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'The more you take, the more you leave behind. '
                                                         'What am I? (9 letters)': 'footsteps',
-               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What is so fragile that saying its name breaks it? '
+                                                        '(7 letters)': 'silence',
                Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What has a heart that doesn’t beat, a mouth that doesn’t '
-                                                        'speak, and a head that doesn’t think? (9 letters)': 'artichoke',
+                                                        'speak, and a head that doesn’t think? '
+                                                        '(9 letters)': 'artichoke',
                Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I’m always in front of you but can never be seen. '
                                                         'What am I? (6 letters)': 'future',
                Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'The more you take out of me, the bigger I get. '

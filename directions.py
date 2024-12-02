@@ -22,7 +22,7 @@ def get_user_direction():
             print('Invalid input. Please enter a valid direction.')
 
 
-def validate_move(board, character, direction):
+def validate_move(board: dict, character: dict, direction: str) -> bool:
     """
     Determine if the player can make the desired move.
 
@@ -59,7 +59,7 @@ def validate_move(board, character, direction):
         return False
 
 
-def move_character(character, direction):
+def move_character(character: dict, direction: str) -> dict:
     """
     Update the character's new X- and Y-coordinates after the move.
 

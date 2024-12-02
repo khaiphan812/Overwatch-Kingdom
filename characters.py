@@ -30,7 +30,7 @@ def make_final_boss():
     return {'HP': 10, 'Weapon': 'Destructive Flail'}
 
 
-def is_alive(character):
+def is_alive(character: dict) -> bool:
     """
     Check if the character is still alive.
 
@@ -47,7 +47,7 @@ def is_alive(character):
     return character['HP'] > 0
 
 
-def check_if_level_up(character):
+def check_if_level_up(character: dict) -> dict:
     """
     Check if the character reaches the next level.
 

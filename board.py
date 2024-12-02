@@ -1,7 +1,7 @@
 import random
 
 
-def make_board(rows, columns):
+def make_board(rows: int, columns: int) -> dict:
     """
     Create a dictionary containing tuple-string pairs describing coordinates and locations.
 
@@ -39,7 +39,7 @@ def make_board(rows, columns):
     return board
 
 
-def describe_current_location(board, character):
+def describe_current_location(board: dict, character: dict) -> None:
     """
     Describe the current location of the player.
 
