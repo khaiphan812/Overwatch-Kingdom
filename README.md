@@ -9,7 +9,6 @@ A01406264
 ## Your GitHub name:
 khaiphan812
 
-
 | appropriate use of...                   | module        | line no. |
 |-----------------------------------------|---------------|----------|
 | immutable data structures               | board.py      | 32       |
