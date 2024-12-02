@@ -9,10 +9,10 @@ A01406264
 ## Your GitHub name:
 khaiphan812
 
-| appropriate use of...                   | module        | line no. |
+| Appropriate use of...                   | Module        | Line no. |
 |-----------------------------------------|---------------|----------|
-| immutable data structures               | board.py      | 32       |
-| mutable data structures                 | characters.py | 16       |
+| immutable data structures (tuple)       | board.py      | 32       |
+| mutable data structures (dictionary)    | characters.py | 16       |
 | exceptions and exception handling       | challenges.py | 110      |
 | minimised scope                         | directions.py | 8        |
 | atomic, independent, reusable functions | characters.py | 33       |
@@ -22,7 +22,7 @@ khaiphan812
 | repetition with for/while-loop          | challenges.py | 161      |
 | membership operator                     | directions.py | 19       |
 | range function                          | board.py      | 30       |
-| a function from itertools               | challenges.py | 284      |
+| function from itertools                 | challenges.py | 284      |
 | random module                           | board.py      | 32       |
 | function annotations                    | characters.py | 33       |
 | doctest/unit tests                      | board.py      | 14       |
