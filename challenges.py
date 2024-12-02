@@ -3,8 +3,6 @@ import itertools
 import time
 from colorama import Fore, init
 
-init()
-
 
 def check_for_challenge():
     """
@@ -47,8 +45,9 @@ def word_puzzle(character):
     :return: the character's updated XP and/or HP stats
 
     """
+    init()
     time.sleep(1)
-    print(Fore.YELLOW + "This location is passcode-protected by Master Doom's guards.")
+    print(Fore.YELLOW + "This location is passcode-protected by Master Doom's guards." + Fore.RESET)
     time.sleep(1)
     print("You received a passcode from a spy but the letters are scrambled.")
     time.sleep(1)
@@ -73,14 +72,14 @@ def word_puzzle(character):
     time.sleep(1)
     if guess == chosen_word:
         character['XP'] = min(600, character['XP'] + 100)
-        print(Fore.YELLOW + f"Correct! You gained 100 XP. Your current XP is {character['XP']}.")
+        print(Fore.CYAN + f"Correct! You gained 100 XP. Your current XP is {character['XP']}." + Fore.RESET)
     else:
         character["HP"] -= 1
         print(f"Wrong! The passcode was: {chosen_word}.")
         time.sleep(1)
         print(f"Your undercover is exposed and the guards attack you.")
         time.sleep(1)
-        print(Fore.RED + f"You lost 1 HP. Your current HP is {character['HP']}.")
+        print(Fore.RED + f"You lost 1 HP. Your current HP is {character['HP']}." + Fore.RESET)
     return character
 
 
@@ -94,8 +93,9 @@ def hostage_rescue(character):
     :return: the character's updated XP and/or HP stats
 
     """
+    init()
     time.sleep(1)
-    print(Fore.YELLOW + "Master Doom's guards are holding a number of innocent people hostage.")
+    print(Fore.YELLOW + "Master Doom's guards are holding a number of innocent people hostage." + Fore.RESET)
     time.sleep(1)
     print("Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.")
     time.sleep(1)
@@ -114,12 +114,13 @@ def hostage_rescue(character):
     time.sleep(1)
     if int(user_guess) == hostage_roll:
         character['XP'] = min(600, character['XP'] + 100)
-        print(Fore.YELLOW + f"Correct! You successfully rescued the victims and gained 100 XP! "
-              f"Your current XP is {character['XP']}.")
+        print(Fore.CYAN + f"Correct! You successfully rescued the victims and gained 100 XP! "
+              f"Your current XP is {character['XP']}." + Fore.RESET)
     else:
         character['HP'] -= 1
-        print(f"Wrong! The correct number of hostage is {hostage_roll}. " +
-              Fore.RED + f"You just lost 1 HP. Your current HP is {character['HP']}.")
+        print(f"Wrong! The correct number of hostage is {hostage_roll}.")
+        time.sleep(1)
+        print(Fore.RED + f"You just lost 1 HP. Your current HP is {character['HP']}." + Fore.RESET)
     return character
 
 
@@ -133,24 +134,25 @@ def skill_cast(character):
     :return: the character's updated XP and/or HP stats
 
     """
+    init()
     time.sleep(1)
     print(Fore.YELLOW + "Here comes a skill battle against Sigma - Master Doom's sidekick.\n" +
           Fore.RESET + "You and Sigma will each cast a skill.\n"
           "Whoever casts a more powerful skill wins the battle.")
     time.sleep(1)
     print("Here are the skills you can cast:\n" +
-          Fore.CYAN + "Fortify:" + Fore.RESET + "Gain temporary health, reducing all damage taken.\n" +
-          Fore.MAGENTA + "Burrow:" + Fore.RESET + "Move underground and then emerge to deal damage.\n" +
-          Fore.GREEN + "Soundwave:" + Fore.RESET + "Create a blast wave to knock enemies away from you.\n" +
-          Fore.BLUE + "Virus:" + Fore.RESET + "Infect enemies with a projectile that deals damage over time.")
+          Fore.CYAN + "Fortify: " + Fore.RESET + "Gain temporary health, reducing all damage taken.\n" +
+          Fore.MAGENTA + "Burrow: " + Fore.RESET + "Move underground and then emerge to deal damage.\n" +
+          Fore.GREEN + "Soundwave: " + Fore.RESET + "Create a blast wave to knock enemies away from you.\n" +
+          Fore.BLUE + "Virus: " + Fore.RESET + "Infect enemies with a projectile that deals damage over time.")
     time.sleep(1)
-    print("And here are the rules:\n" +
-          Fore.CYAN + "Fortify" + Fore.RESET + "beats" + Fore.MAGENTA + "Burrow.\n" +
-          Fore.MAGENTA + "Burrow" + Fore.RESET + "beats" + Fore.GREEN + "Soundwave.\n" +
-          Fore.GREEN + "Soundwave" + Fore.RESET + "beats" + Fore.BLUE + "Virus.\n" +
-          Fore.BLUE + "Virus" + Fore.RESET + "beats" + Fore.CYAN + "Fortify.\n" +
-          Fore.GREEN + "Soundwave" + Fore.RESET + "beats" + Fore.CYAN + "Fortify.\n" +
-          Fore.BLUE + "Virus" + Fore.RESET + "beats" + Fore.MAGENTA + "Burrow.")
+    print(Fore.YELLOW + "And here are the rules:\n" +
+          Fore.CYAN + "Fortify " + Fore.RESET + "beats " + Fore.MAGENTA + "Burrow.\n" +
+          Fore.MAGENTA + "Burrow " + Fore.RESET + "beats " + Fore.GREEN + "Soundwave.\n" +
+          Fore.GREEN + "Soundwave " + Fore.RESET + "beats " + Fore.BLUE + "Virus.\n" +
+          Fore.BLUE + "Virus " + Fore.RESET + "beats " + Fore.CYAN + "Fortify.\n" +
+          Fore.GREEN + "Soundwave " + Fore.RESET + "beats " + Fore.CYAN + "Fortify.\n" +
+          Fore.BLUE + "Virus " + Fore.RESET + "beats " + Fore.MAGENTA + "Burrow." + Fore.RESET)
     time.sleep(1)
     print("If you win, you'll gain 100 XP. If you lose, you'll lose 1 HP. If it's a tie, no gain or loss.")
     time.sleep(1)
@@ -174,10 +176,10 @@ def skill_cast(character):
          (user_choice == 'soundwave' and enemy_choice == 'fortify') or \
          (user_choice == 'virus' and enemy_choice == 'burrow'):
         character['XP'] = min(600, character['XP'] + 100)
-        print(Fore.YELLOW + f"You won the fight. You gained 100 XP! Your current XP is {character['XP']}.")
+        print(Fore.CYAN + f"You won the fight. You gained 100 XP! Your current XP is {character['XP']}." + Fore.RESET)
     else:
         character['HP'] -= 1
-        print(Fore.RED + f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}.")
+        print(Fore.RED + f"You lost the fight. You also lost 1 HP. Your current HP is {character['HP']}." + Fore.RESET)
     return character
 
 
@@ -239,6 +241,7 @@ def final_boss_battle(character, doom):
     :return: the character's updated stats
 
     """
+    init()
     time.sleep(1)
     print(Fore.YELLOW + "You are now ready to face the final boss - Master Doom!\n" +
           Fore.RESET + "You must defeat him to complete your journey.")
@@ -249,29 +252,30 @@ def final_boss_battle(character, doom):
           "Only one-word answers, no articles (a/an/the) required.\n"
           "To kill or to be killed. Let's begin!")
     time.sleep(1)
-    riddles = {Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'I speak without a mouth and hear without ears. '
-               'I have no body, but I come alive with the wind. What am I? (4 letters)': 'echo',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'I am not alive, but I can grow; I don’t have lungs, '
-                                                       'but I need air; I don’t have a mouth, and yet I drown. '
-                                                       'What am I? (4 letters)': 'fire',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'The more you take, the more you leave behind. '
-                                                       'What am I? (9 letters)': 'footsteps',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'What has a heart that doesn’t beat, a mouth that doesn’t '
-                                                       'speak, and a head that doesn’t think? (9 letters)': 'artichoke',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'I’m always in front of you but can never be seen. '
-                                                       'What am I? (6 letters)': 'future',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'The more you take out of me, the bigger I get. '
-                                                       'What am I? (4 letters)': 'hole',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'I have many teeth but cannot bite.'
-                                                       'What am I? (4 letters)': 'comb',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'What has no beginning, end, or middle? (6 letters)': 'circle',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'I can be cracked, made, told, and played. '
-                                                       'What am I? (4 letters)': 'joke',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'What is harder to catch the faster you run? '
-                                                       '(6 letters)': 'breath',
-               Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'The maker doesn’t want it. The buyer doesn’t use it. '
-               'The user doesn’t know it. What am I? (6 letters)': 'coffin',
+    riddles = {Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I speak without a mouth and hear without ears. '
+                                                        'I have no body, but I come alive with the wind. '
+                                                        'What am I? (4 letters)': 'echo',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I am not alive, but I can grow; I don’t have lungs, '
+                                                        'but I need air; I don’t have a mouth, and yet I drown. '
+                                                        'What am I? (4 letters)': 'fire',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'The more you take, the more you leave behind. '
+                                                        'What am I? (9 letters)': 'footsteps',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What is so fragile that saying its name breaks it? (7 letters)': 'silence',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What has a heart that doesn’t beat, a mouth that doesn’t '
+                                                        'speak, and a head that doesn’t think? (9 letters)': 'artichoke',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I’m always in front of you but can never be seen. '
+                                                        'What am I? (6 letters)': 'future',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'The more you take out of me, the bigger I get. '
+                                                        'What am I? (4 letters)': 'hole',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I have many teeth but cannot bite.'
+                                                        'What am I? (4 letters)': 'comb',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What has no beginning, end, or middle? (6 letters)': 'circle',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'I can be cracked, made, told, and played. '
+                                                        'What am I? (4 letters)': 'joke',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'What is harder to catch the faster you run? '
+                                                        '(6 letters)': 'breath',
+               Fore.MAGENTA + 'Riddle: ' + Fore.RESET + 'The maker doesn’t want it. The buyer doesn’t use it. '
+                                                        'The user doesn’t know it. What am I? (6 letters)': 'coffin',
                Fore.MAGENTA + 'Riddle:' + Fore.RESET + 'The more you have of me, the less you see. '
                                                        'What am I? (8 letters)': 'darkness'
                }
@@ -294,8 +298,8 @@ def final_boss_battle(character, doom):
             print(f"He lost 2 HP and has {doom['HP']} HP left.")
         time.sleep(1)
     if character['HP'] == 0:
-        print(Fore.RED + "You have fallen before Master Doom.")
+        print(Fore.RED + "You have fallen before Master Doom." + Fore.RESET)
     elif doom['HP'] == 0:
-        print(Fore.YELLOW + "You have defeated Master Doom!")
+        print(Fore.YELLOW + "You have defeated Master Doom!" + Fore.RESET)
     time.sleep(1)
     return character

@@ -65,11 +65,11 @@ def game():
                 if character['HP'] > 0:
                     mission_complete = True
         else:
-            print(Fore.RED + "Sorry you can't go in that direction.")
+            print(Fore.RED + "Sorry you can't go in that direction." + Fore.RESET)
     if not is_alive(character):
-        print(Fore.RED + "Sorry, you died. You will need another effort to save the Overwatch Kingdom.")
+        print("Sorry, you died. You will need another effort to save the Overwatch Kingdom.")
         time.sleep(1)
-        print(Fore.RED + """
+        print("""
             ██╗    ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║
             ██╔████╔██║██║███████╗███████╗██║██║   ██║██╔██╗ ██║
@@ -85,9 +85,9 @@ def game():
             ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚═════╝ ╚═╝ 
               """)
     else:
-        print(Fore.YELLOW + "Congratulations! Peace has finally returned to Overwatch Kingdom!")
+        print(Fore.GREEN + "Congratulations! Peace has finally returned to Overwatch Kingdom!" + Fore.RESET)
         time.sleep(1)
-        print(Fore.YELLOW + """
+        print(Fore.GREEN + """
             ███╗   ███╗██╗███████╗███████╗██╗ ██████╗ ███╗   ██╗                    
             ████╗ ████║██║██╔════╝██╔════╝██║██╔═══██╗████╗  ██║                    
             ██╔████╔██║██║███████╗███████╗██║██║   ██║██╔██╗ ██║                    
