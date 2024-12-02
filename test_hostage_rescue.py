@@ -54,7 +54,7 @@ class Test(TestCase):
         expected = ("Master Doom's guards are holding a number of innocent people hostage.\n"
                     "Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.\n"
                     "Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!\n"
-                    "Wrong! The correct number of hostage is 3. "
+                    "Wrong! The correct number of hostage is 3.\n"
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
@@ -68,7 +68,7 @@ class Test(TestCase):
         expected = ("Master Doom's guards are holding a number of innocent people hostage.\n"
                     "Guess the correct number of victims held hostage to rescue them, otherwise you'll lose 1 HP.\n"
                     "Luck is an underrated factor for success. You'll need it to overcome this challenge. Good luck!\n"
-                    "Wrong! The correct number of hostage is 2. "
+                    "Wrong! The correct number of hostage is 2.\n"
                     "You just lost 1 HP. Your current HP is 4.\n")
         self.assertEqual(expected, actual)
 
