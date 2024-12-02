@@ -10,21 +10,21 @@ A01406264
 khaiphan812
 
 
-| appropriate us of...                    | module | line no. |
-|-----------------------------------------|--------|----------|
-| immutable data structures               |        |          |
-| mutable data structures                 |        |          |
-| exceptions and exception handling       |        |          |
-| minimised scope                         |        |          |
-| atomic, independent, reusable functions |        |          |
-| flat code                               |        |          |
-| list/dictionary comprehensions          |        |          |
-| selection using if-statements           |        |          |
-| repetition with for/while-loop          |        |          |
-| membership operator                     |        |          |
-| range function                          |        |          |
-| a function from itertools               |        |          |
-| random module                           |        |          |
-| function annotations                    |        |          |
-| doctest/unit tests                      |        |          |
-| f-strings formatting                    |        |          |
+| appropriate use of...                   | module        | line no. |
+|-----------------------------------------|---------------|----------|
+| immutable data structures               | board.py      | 32       |
+| mutable data structures                 | characters.py | 16       |
+| exceptions and exception handling       | challenges.py | 110      |
+| minimised scope                         | directions.py | 8        |
+| atomic, independent, reusable functions | characters.py | 33       |
+| flat code                               | board.py      | 42       |
+| list/dictionary comprehensions          | board.py      | 21       |
+| selection using if-statements           | challenges.py | 29       |
+| repetition with for/while-loop          | challenges.py | 161      |
+| membership operator                     | directions.py | 19       |
+| range function                          | board.py      | 30       |
+| a function from itertools               | challenges.py | 284      |
+| random module                           | board.py      | 32       |
+| function annotations                    | characters.py | 33       |
+| doctest/unit tests                      | board.py      | 14       |
+| f-strings formatting                    | challenges.py | 75       |
