@@ -21,10 +21,9 @@ class Test(TestCase):
 
         with patch('itertools.cycle', return_value=iter(riddles.items())):
             final_boss_battle(char, boss)
-
         actual = mock_output.getvalue()
-        self.assertIn("Correct! You just shot Master Doom with your Biotic Rifle.\n", actual)
-        self.assertIn("He lost 2 HP and has 8 HP left.\n", actual)
+        expected = "Correct! You just shot Master Doom with your Biotic Rifle.\nHe lost 2 HP and has 8 HP left.\n"
+        self.assertIn(expected, actual)
 
     @patch('builtins.input', side_effect=['cloud', 'fire', 'footsteps', 'silence', 'artichoke'])
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -42,10 +41,10 @@ class Test(TestCase):
 
         with patch('itertools.cycle', return_value=iter(riddles.items())):
             final_boss_battle(char, boss)
-
         actual = mock_output.getvalue()
-        self.assertIn("Wrong answer! Master Doom just struck you with his Destructive Flail.\n", actual)
-        self.assertIn("You lost 2 HP. You have 9 HP left.", actual)
+        expected = ("Wrong answer! Master Doom just struck you with his Destructive Flail.\n"
+                    "You lost 2 HP. You have 9 HP left.\n")
+        self.assertIn(expected, actual)
 
     @patch('builtins.input', side_effect=['echo', 'fire', 'footsteps', 'silence', 'artichoke'])
     def test_final_boss_battle_character_defeats_boss(self, _):
