@@ -53,14 +53,14 @@ def word_puzzle(character: dict) -> dict:
     time.sleep(1)
     print("You must give the correct passcode to hide your identity and safely get through the gate.")
     time.sleep(1)
-    print("Hint: the passcode is VERY python-related!")
+    print("Hint: the passcode is VERY 'pythonic'!")
     time.sleep(1)
     words_list = ['reference', 'function', 'aliases',
                   'immutable', 'itertools', 'iteration',
                   'dictionary', 'tuple', 'variable',
                   'decorator', 'package', 'exception',
                   'module', 'argument', 'parameter',
-                  'recursion', 'intern', 'object',
+                  'recursion', 'interning', 'object',
                   'lambda', 'memory', 'debugger',
                   'flowchart', 'abstract', 'algorithm',]
     chosen_word = random.choice(words_list)
